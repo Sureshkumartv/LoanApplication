@@ -1,0 +1,152 @@
+
+<div role="tabpanel" class="tab-pane " id="Income" th:fragment="form">
+	<script th:src="@{/assets/js/custom/longapp/income.js}"></script>
+	<div class="custom-tab-content text-center">
+		<div class="container">
+			<div class="sec-inner">
+				<div class="row">
+					<div class="center-box income_form tbl_inc">
+
+						<div id="added_income" style="display: none;">
+							<h2>Added Income</h2>
+
+
+							<div class="panel panel-default  thumbnail">
+
+								<div class="panel-body">
+									<div class="table-responsive preview_form">
+										<table id="location1" border='1'
+											class='table table-striped table-bordered'>
+											<thead>
+												<tr class="bg_color">
+													<th class="text-center">Account Owner</th>
+													<th class="text-center">Income Type</th>
+													<th class="text-center">Income</th>
+													<th class="text-center">Edit</th>
+												</tr>
+											</thead>
+											<tbody>
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+<!-- 							<div class="form-group row text-center"> -->
+<!-- 								<div class="col-sm-12"> -->
+<!-- 									<button class="btn btn_custom btn_inline" id="backbutton">Add -->
+<!-- 										Another</button> -->
+<!-- 									<button class="btn btn_next btn_custom btn_inline" -->
+<!-- 										id="btn_next">I'm Done</button> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+						</div>
+						<div id="buttonsDiv" class="cent-box">
+							<h2>Income</h2>
+							<div class="form-group row">
+								<div class="col-sm-5 text-left">
+									<label class="col-form-label lbl_co_borrow"> Can you
+										prove/verify your income?</label>
+								</div>
+								<div class="col-sm-4">
+									<div class="toggle_text">
+										<span> NO </span> <input type="checkbox" id="verifyIncome"
+											class="cbx hidden" value="Yes"> <label
+											for="verifyIncome" class="lbl"></label> <span> YES </span>
+									</div>
+								</div>
+							</div>
+							<div class="item-box buttons " id="button1" data-datac="emp_div">
+								<div class="box-info">
+									<i><img src="assets/images/Icon_1.png" alt=""></i>
+									<h4>
+										<span>Employment </span>
+									</h4>
+								</div>
+							</div>
+							<div class="item-box buttons" id="button2"
+								data-datac="rental_div">
+								<div class="box-info">
+									<i><img src="assets/images/rent.png" alt=""></i>
+									<h4>
+										<span> Rentals </span>
+									</h4>
+								</div>
+							</div>
+							<div class="item-box buttons" id="button3"
+								data-datac="social_div">
+								<div class="box-info">
+									<i><img src="assets/images/ssn.png" alt=""></i>
+									<h4>
+										<span> Social Security </span>
+									</h4>
+								</div>
+							</div>
+							<div class="item-box buttons" id="button4"
+								data-datac="pension_div">
+								<div class="box-info">
+									<i><img src="assets/images/pension.png" alt=""></i>
+									<h4>
+										<span> Pension </span>
+									</h4>
+								</div>
+							</div>
+							<div class="item-box buttons" id="button5"
+								data-datac="others_div">
+								<div class="box-info">
+									<i><img src="assets/images/other.png" alt=""></i>
+									<h4>
+										<span> Others </span>
+									</h4>
+								</div>
+							</div>
+
+
+						</div>
+
+						<div class="row text-center" id="nxtbut" >
+							<div class="col-sm-12">
+							<button class="btn btn_custom btn_inline" id="showIncomeDetails" style="display:none;">Back</button>
+								<button class="btn btn_previous btn_custom btn_inline"
+									id="btn_prev_app_income">
+									<i class="fa fa-chevron-left"></i> Previous
+								</button>
+								<button class="btn btn_custom btn_inline" id="addAnother" style="display:none;">Add 
+									Another</button>
+								<button class="btn btn_next btn_custom btn_inline"
+									id="btn_next_app_income">
+									Next <i class="fa fa-chevron-right"></i>
+								</button>
+								<button class="btn btn_next btn_custom btn_inline"  id="btn_iam_done"  style="display:none;">I'm Done</button> 
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="row text-center">
+					<div class="center-box income_form">
+						<div
+							th:replace="pages/application/income/app_employement :: tabForms">...</div>
+						<div th:replace="pages/application/income/app_rental :: tabForms">...</div>
+						<div
+							th:replace="pages/application/income/app_socialsecurity :: tabForms">...</div>
+						<div th:replace="pages/application/income/app_pension :: tabForms">...</div>
+						<div
+							th:replace="pages/application/income/app_income_other :: tabForms">...</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:inline="javascript" type="text/javascript">
+		/*<![CDATA[*/
+		// Some javascript...
+		$(document).ready(function() {
+
+		});
+		/*]]>*/
+	</script>
+</div>
+

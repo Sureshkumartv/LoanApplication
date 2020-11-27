@@ -1,0 +1,380 @@
+
+<div role="tabpanel" class="tab-pane active" th:fragment="form">
+
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row text-center">
+				<div class="sec-inner">
+					<div class="center-box form_start">
+						<h2 class="person_heading">[[${app_personal.borrowerName ==
+							'borr' ?'Borrower ' :'Co Borrower ' }]]Personal Information</h2>
+						<form class="form-horizontal" method="POST" id="form_app_personal"
+							th:object="${app_personal}" th:modelAttribute="loan_app">
+
+							<div class="form-group row">
+								<div class="col-sm-2 text-left">
+									<label for="co-bar" class="col-form-label lbl_co_borrow">
+										<span class="red">*</span> Borrower
+									</label>
+								</div>
+								<div class="col-sm-5 text-left">
+									<select class="form-control borrowerName required"
+										id="borrowerName" th:field="*{borrowerName}">
+										<option value="borr">[[${app_start == null ? '':
+											app_start.borrowerFullName}]]</option>
+										<option value="coborr"
+											th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}">[[${app_start
+											== null ? '': app_start.coBorrowerFullName}]]</option>
+									</select>
+								</div>
+							</div>
+							<div class="borrDiv">
+								<div class="form-group row  ">
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Email Address <span
+											class="red">*</span></label> <input type="text"
+											class="form-control required" th:field="*{emailId}"
+											maxlength="50" placeholder="" id="emailId" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Date of Birth<span
+											class="red">*</span></label> <input
+											class="form-control date  date-of-birth hasDatepicker required "
+											type="tel" th:field="*{dateOfBirth}" maxlength="20"
+											placeholder="mm/dd/yyyy" id="dob" title="" />
+										<div class="input-group-append">
+											<span class="input-group-text"><i
+												class="far fa-calendar-alt"></i></span>
+										</div>
+									</div>
+									<div class="col-sm-4 co-xs-12">
+										<label class="control-label">SSN <span class="red">*</span></label>
+										<input type="text" class="form-control required "
+											th:field="*{ssn}" maxlength="50" id="ssn" placeholder=""
+											title="" />
+									</div>
+								</div>
+								<div class="form-group row  ">
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label phone">Home Phone</label> <input
+											type="text" class="form-control phone "
+											th:field="*{homePhone}" maxlength="50" placeholder=""
+											id="homePhone" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Cell Phone<span
+											class="red">*</span></label> <input type="text"
+											class="form-control phone" th:field="*{cellPhone}"
+											maxlength="20" placeholder="" id="cellPhone" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12">
+										<label class="control-label">Work Phone </label> <input
+											type="text" class="form-control phone"
+											th:field="*{workPhone}" maxlength="50" id="workPhone"
+											placeholder="" title="" />
+									</div>
+								</div>
+								<h4 class="text-left">Current Address</h4>
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Street Address <span
+											class="red">*</span></label> <input type="text"
+											class="form-control required" th:field="*{currentStreet}"
+											maxlength="50" placeholder="" id="currentStreet" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">City <span class="red">*</span></label>
+										<input type="text" class="form-control required"
+											th:field="*{currentCity}" maxlength="50" placeholder=""
+											id="currentCity" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">State<span class="red">*</span></label>
+										<select class="form-control" th:value="*{currentState}"
+											name="currentState" id="currentState" required="required">
+
+											<option th:each="state : ${states}"
+												th:value="${state.propertyCode}"
+												th:text="${state.propertyState}"></option>
+										</select>
+									</div>
+									<div class="col-sm-3 co-xs-12">
+										<label class="control-label">Zip <span class="red">*</span></label>
+										<input type="text" class="form-control zip required"
+											th:field="*{currentZip}" maxlength="50" id="currentZip"
+											placeholder="" title="" />
+									</div>
+								</div>
+								<h4 class="text-left">Years at this Address</h4>
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Years<span class="red">*</span></label>
+										<input type="text" class="form-control required year"
+											th:field="*{noOfYears}" maxlength="50" placeholder=""
+											id="noOfYears" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Months </label> <input
+											type="text" class="form-control month "
+											th:field="*{noOfMonths}" maxlength="50" placeholder=""
+											id="noOfMonths" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Rent/Own<span class="red">*</span></label>
+										<select th:field="*{houseType}" id="houseType"
+											class="form-control required houseType ">
+											<option value="Rent">Rent</option>
+											<option value="Own">Own</option>
+										</select>
+									</div>
+									<div class="col-sm-3 co-xs-12 borrrent " th:style="${app_personal.houseType =='Rent' ?'' :'display:none;' }">
+										<label class="control-label">House Rent </label> <input
+											type="text" class="form-control money "
+											th:field="*{houseRent}" placeholder="Houser Rent"
+											id="houseRent" title="" />
+									</div>
+
+								</div>
+								<div class="form-group row ">
+									<div class="col-sm-5 text-left">
+										<label class="col-form-label lbl_co_borrow"> Mailing
+											address same as current address?</label>
+									</div>
+									<div class="col-sm-4">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{currentMailingAddress}"
+												id="currentMailingAddress" class="cbx hidden" value="Yes">
+											<label for="currentMailingAddress" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+								<div class="borrmailing"
+									th:style="${currentMailingAddress =='No' ?'' :'display:none;' }">
+									<h4 class="text-left">Mailing Address</h4>
+									<div class="form-group row mailing">
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">Street Address <span
+												class="red">*</span></label> <input type="text"
+												class="form-control required2" th:field="*{mailingStreet}"
+												maxlength="50" placeholder="" id="mailingStreet" title="" />
+										</div>
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">City <span class="red">*</span></label>
+											<input type="text" class="form-control required2"
+												th:field="*{mailingCity}" maxlength="50" placeholder=""
+												id="mailingCity" title="" />
+										</div>
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">State<span class="red">*</span></label>
+											<input type="text" class="form-control required2"
+												th:field="*{mailingState}" maxlength="20" placeholder=""
+												id="mailingState" title="" />
+										</div>
+										<div class="col-sm-3 co-xs-12">
+											<label class="control-label">Zip <span class="red">*</span></label>
+											<input type="text" class="form-control required2"
+												th:field="*{mailingZip}" maxlength="50" id="mailingZip"
+												placeholder="" title="" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="coborrDiv"
+								th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}"
+								th:style="${app_personal.borrowerName == 'borr'   ?'display:none;' :'' }">
+								<div class="form-group row  ">
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Email Address <span
+											class="red">*</span></label> <input type="text"
+											class="form-control co_required" th:field="*{coEmailId}"
+											maxlength="50" placeholder="" id="coEmailId" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Date of Birth<span
+											class="red">*</span></label> <input
+											class="form-control date  date-of-bith hasDatepicker co_required "
+											type="tel" th:field="*{coDateOfBirth}" maxlength="20"
+											placeholder="mm/dd/yyyy" id="coDateOfBirth" title="" />
+										<div class="input-group-append">
+											<span class="input-group-text"><i
+												class="far fa-calendar-alt"></i></span>
+										</div>
+									</div>
+									<div class="col-sm-4 co-xs-12">
+										<label class="control-label">SSN <span class="red">*</span></label>
+										<input type="text" class="form-control co_required "
+											th:field="*{coSsn}" maxlength="50" id="coSsn" placeholder=""
+											title="" />
+									</div>
+								</div>
+								<div class="form-group row  ">
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label phone">Home Phone</label> <input
+											type="text" class="form-control " th:field="*{coHomePhone}"
+											maxlength="50" placeholder="" id="coHomePhone" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12 ">
+										<label class="control-label">Cell Phone<span
+											class="red">*</span></label> <input type="text"
+											class="form-control co_required" th:field="*{coCellPhone}"
+											maxlength="20" placeholder="" id="coCellPhone" title="" />
+									</div>
+									<div class="col-sm-4 co-xs-12">
+										<label class="control-label">Work Phone </label> <input
+											type="text" class="form-control " th:field="*{coWorkPhone}"
+											maxlength="50" id="coWorkPhone" placeholder="" title="" />
+									</div>
+								</div>
+								<h4 class="text-left">Current Address</h4>
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Street Address <span
+											class="red">*</span></label> <input type="text"
+											class="form-control co_required"
+											th:field="*{coCurrentStreet}" maxlength="50" placeholder=""
+											id="coCurrentStreet" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">City <span class="red">*</span></label>
+										<input type="text" class="form-control co_required"
+											th:field="*{coCurrentCity}" maxlength="50" placeholder=""
+											id="coCurrentCity" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">State<span class="red">*</span></label>
+										<!-- 	<input type="text" class="form-control"
+										th:field="*{coCurrentState}" maxlength="20" placeholder=""
+										id="coCurrentState" title="" /> -->
+										<select class="form-control co_required"
+											th:value="*{coCurrentState}" name="currentState"
+											id="currentState">
+
+											<option th:each="state : ${states}"
+												th:value="${state.propertyCode}"
+												th:text="${state.propertyState}"></option>
+										</select>
+									</div>
+									<div class="col-sm-3 co-xs-12">
+										<label class="control-label">Zip <span class="red">*</span></label>
+										<input type="text" class="form-control co_required zip"
+											th:field="*{coCurrentZip}" maxlength="50" id="coCurrentZip"
+											placeholder="" title="" />
+									</div>
+								</div>
+								<h4 class="text-left">Years at this Address</h4>
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Years<span class="red">*</span></label>
+										<input type="text" class="form-control co_required year"
+											th:field="*{coNoOfYears}" maxlength="50" placeholder=""
+											id="coNoOfYears" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Months <!--  <span class="red">*</span> -->
+										</label> <input type="text" class="form-control co_required month"
+											th:field="*{coNoOfMonths}" maxlength="50" placeholder=""
+											id="coNoOfMonths" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Rent/Own<span class="red">*</span></label>
+										<select th:field="*{coHouseType}" id="coHouseType"
+											class="form-control co_required coHouseType">
+											<option value="Rent">Rent</option>
+											<option value="Own">Own</option>
+										</select>
+									</div>
+									<div class="col-sm-3 co-xs-12 coborrrent " th:style="${app_personal.coHouseType =='Rent' ?'' :'display:none;' }">
+										<label class="control-label">House Rent </label> <input
+											type="text" class="form-control money "
+											th:field="*{coHouseRent}"
+											placeholder="Co Borrower Houser Rent" id="coHouseRent"
+											title="" />
+									</div>
+								</div>
+								<div class="form-group row ">
+									<div class="col-sm-5 text-left">
+										<label class="col-form-label lbl_co_borrow"> Mailing
+											address same as current address?</label>
+									</div>
+									<div class="col-sm-4">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coCurrentMailingAddress}"
+												id="coCurrentMailingAddress" class="cbx hidden" value="Yes">
+											<label for="coCurrentMailingAddres" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+								<div class="coborrmailing"
+									th:style="${coCurrentMailingAddress =='No' ?'' :'display:none;' }">
+									<h4 class="text-left">Mailing Address</h4>
+									<div class="form-group row mailing">
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">Street Address <span
+												class="red">*</span></label> <input type="text"
+												class="form-control co_required"
+												th:field="*{coMailingStreet}" maxlength="50" placeholder=""
+												id="coMailingStreet" title="" />
+										</div>
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">City <span class="red">*</span></label>
+											<input type="text" class="form-control co_required"
+												th:field="*{coMailingCity}" maxlength="50" placeholder=""
+												id="coMailingCity" title="" />
+										</div>
+										<div class="col-sm-3 co-xs-12 ">
+											<label class="control-label">State<span class="red">*</span></label>
+											<select class="form-control co_required"
+												th:value="*{coMailingState}" name="coMailingState"
+												id="coMailingState">
+
+												<option th:each="state : ${states}"
+													th:value="${state.propertyCode}"
+													th:text="${state.propertyState}"></option>
+											</select>
+										</div>
+										<div class="col-sm-3 co-xs-12">
+											<label class="control-label">Zip <span class="red">*</span></label>
+											<input type="text" class="form-control co_required"
+												th:field="*{coMailingZip}" maxlength="50" id="coMailingZip"
+												placeholder="" title="" />
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row text-center">
+								<div class="col-sm-7 col-sm-offset-3 ">
+									<button class="btn btn_previous btn_custom btn_inline"
+										id="btn_prev_app_personal">
+										<i class="fa fa-chevron-left"></i> Previous
+									</button>
+									<button class="btn btn_next btn_custom btn_inline"
+										id="btn_next_app_personal">
+										Next <i class="fa fa-chevron-right"></i>
+									</button>
+								</div>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		$(function() {
+			$('.input-group.date .date-of-birth').datepicker({
+				autoclose : true,
+				todayHighlight : true
+			});
+		});
+		/*]]>*/
+	</script>
+	<script th:src="@{/assets/js/custom/longapp/personal.js}"></script>
+</div>

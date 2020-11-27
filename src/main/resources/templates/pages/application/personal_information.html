@@ -1,0 +1,487 @@
+<form th:fragment="form">
+	<style type="text/css">
+#footer {
+	position: static;
+}
+</style>
+
+<script th:src="@{/assets/js/custom/longapp/personal.js}"></script>
+
+<div role="tabpanel" class="tab-pane active" id="personal">
+  <div class="custom-tab-content">
+    <div class="container">
+      <div class="row text-center">
+        <div class="sec-inner">
+          <div class="center-box form_start">
+            <h2> Personal Information </h2>
+            <form class="form-horizontal" method="POST" id="form">
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <label class="control-label"> Marital Status</label>
+                   <select name="borrower_marital_status" id="marital-status" class="marital-status1 form-control">
+               <option value="">pick one</option>
+               <option  value="Married">Married</option>
+               <option  value="Unmarried">Single</option>
+            </select>
+                </div>
+                <div class="col-sm-4">
+                  <label class="control-label"> Date Of Birth <span class="red">*</span></label>
+                  <input type="text" class="form-control date required4 date-of-bith" name="borrower_dob" id="dob" placeholder="mm/dd/yyyy"  title="The borrower's date of birth.">
+                </div>
+                <div class="col-sm-4">
+                  <label class="control-label"> SSN <span class="red">*</span></label>
+                  <input type="text" class="form-control required4 ssn" name="social_security_tax_id" id="sstaxid"  placeholder=""  title="The borrower's social security number.">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <label class="control-label"> Home Phone </label>
+                  <input type="tel" class="form-control phone" name="borrower_phone" id="hphone" placeholder="" 
+               title="The borrower's home phone number in the format nnn-nnn-nnnn nnnn.">
+                </div>
+                <div class="col-sm-4">
+                  <label class="control-label"> Cell Phone <span class="red">*</span></label>
+                  <input type="tel" class="form-control required4 phone" name="borrower_cell_phone" id="cphone" placeholder=""  title="The borrower's cell phone number.">
+                </div>
+              </div>
+              <h4 class="text-left"> Current Address </h4>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label class="control-label"> Street Address <span class="red">*</span></label>
+                  <input type="text" class="form-control required4" name="borrower_street_address" maxlength="70" id="current-street" placeholder=""  title="The borrower's present street address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> City <span class="red">*</span></label>
+                  <input class="form-control required4" name="borrower_present_city" maxlength="50" id="current-city" placeholder=""  title="The city in which the borrower's present address is located.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> State <span class="red">*</span></label>
+                  <select class="form-control required4" name="borrower_present_state" id="borrower_present_state" title="The state in which the borrower's present address is located.">
+               <option value=""> Select State </option>
+                <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+              <!--   <?php foreach ($states as $state) : ?>
+               <option value="<?php echo $state->StateCode; ?>" <?php echo (getFormValue($lead,'borrower_present_state') == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+               <?php endforeach; ?>-->
+            </select>
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> ZIP <span class="red">*</span></label>
+                  <input type="text" class="form-control required4 zip"  name="borrower_present_zip" id="current-zip" placeholder=""  title="The zip code in which the borrower's present address is located.">
+                </div>
+                <input type="hidden" id="is_b_address_valid" value="1">
+                 <div class="col-sm-3 address_error" style="display: none;">
+      Address you entered is not valid
+   </div>
+              </div>
+              <h4 class="text-left"> Years at this Address </h4>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label class="control-label"> Years <span class="red">*</span></label>
+                  <input type="text" class="form-control year required4" name="borrower_present_year" id="current-year" placeholder="" maxlength="2"  title="The number of years and months at the present address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> Months </label>
+                  <input type="text" class="form-control month numberBox" name="borrower_present_month" id="current-month" placeholder="" maxlength="2" min="1" max="11"  title="The number of years and months at the present address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> Rent/Own <span class="red">*</span></label>
+                  <select name="borrower_present_house_type" class="form-control rent required4" id="borrower_present_house_type">
+                     <option value="">Select Rent/Own</option>
+                   <option  value="Rent" title ="The present residence is rented by the borrower."> Rent</option>
+               <option  value="Own" title ="The present residence is owned by the borrower.">Own</option>
+                  </select>
+                </div>
+                <div class="col-sm-3" id="rent" style="display:none;">
+                  <label class="control-label"> Rent Amount </label>
+                  <input type="text" class="form-control money" name="barrower_rent_amount" id="borr-rent-amount" maxlength="50" placeholder=""  title="
+               The present monthly payment for rent on the borrower's primary residence.">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-5 text-left">
+                  <label for="co-bar" class="col-form-label lbl_co_borrow">Mailing address same as current address? </label>
+                </div>
+                <input type='hidden' value='Off' name='borrower_mailing_address_status'>
+                <div class="col-sm-4">
+                  <div class="toggle_text"> <span> NO </span>
+                    <input type="checkbox" class="cbx hidden"  id="borrower_mailing_address_status" name="borrower_mailing_address_status" />
+                    <label for="borrower_mailing_address_status" class="lbl"></label>
+                    <span> YES </span> </div>
+                </div>
+              </div>
+              <h4 class="text-left"> Mailing Address? </h4>
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label class="control-label"> Street Address <span class="red">*</span></label>
+                  <input type="text" class="form-control previousaddress required43 previous_address" name="borrower_mailing_address" maxlength="70" id="previous_street" placeholder=""  title="The borrower's previous street address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> City <span class="red">*</span></label>
+                  <input type="text" class="form-control previousaddress  required43 previous_city" name="borrower_mailing_city" id="previous_city" maxlength="30" placeholder=""  title="The city in which the borrower's previous address is located.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> State <span class="red">*</span></label>
+                  <select class="form-control previousaddress  required43 previous_state" id="previous_state" name="borrower_mailing_state" title="The state in which the borrower's previous address is located." >
+                  <option value="">Select State</option>
+                                 <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+                <!--    <?php foreach ($states as $state) : ?>
+                  <option value="<?php echo $state->StateCode; ?>" <?php echo (getFormValue($lead,'borrower_previous_state') == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+                  <?php endforeach; ?>-->
+               </select>
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label"> ZIP <span class="red">*</span></label>
+                  <input type="text" class="form-control zip previousaddress  required43 previous_zip"  name="borrower_previous_zip" id="previous_zip" placeholder=""  title="The zip code in which the co-borrower's previous address is located.">
+                </div>
+                <input type="hidden" id="is_b_mail_address_valid" value="1">
+                      <div class="col-sm-3 address_erro" style="display: none;">
+      Address you entered is not valid
+   </div>
+              </div>
+          
+
+  <div id="co-borrower-info" style="display: none;">
+          <h2> Co Borrower Information </h2>
+              
+                  <div class="form-group row">
+                    <div class="col-sm-4">
+                      <label class="control-label"> Marital Status</label>
+                      <select name="co_borrower_marital_status" id="co-marital-status" class="marital-status1 form-control">
+                       <option value="">pick one</option>
+                  <option  value="Married">Married </option>
+                  <option  value="Unmarried">Single </option>
+                
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label"> Date Of Birth <span class="red">*</span></label>
+                      <input type="text" class="form-control required42 date date-of-bith" name="co_borrower_dob" id="cbdob" placeholder=""  title="The co-borrower's date of birth.">
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label"> SSN <span class="red">*</span></label>
+                      <input type="text" class="form-control required42 ssn" name="co_social_security_tax_id" id="co-sstaxid" placeholder=""  title="The co-borrower's social security number.">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-4">
+                      <label class="control-label"> Home Phone </label>
+                      <input type="tel" class="form-control phone" name="co_borrower_phone" id="co_hphone" placeholder=""  title="The co-borrower's home phone number in the format nnn-nnn-nnnn nnnn.">
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label"> Cell Phone <span class="red">*</span></label>
+                      <input type="tel"  class="form-control required42 phone" name="co_borrower_cell_phone" id="co_cphone" placeholder=""  title="The co-borrower's cell number.">
+                    </div>
+                    
+                  </div>
+                  <h4 class="text-left"> Current Address </h4>
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                      <label class="control-label"> Street Address <span class="red">*</span></label>
+                      <input type="text"class="form-control required42 co_street" name="co_borrower_street_address" maxlength="50" id="co-current-street" placeholder=""  title="The co-borrower's present street address.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> City <span class="red">*</span></label>
+                      <input type="text" class="form-control required42 co_city" name="co_borrower_present_city" maxlength="50" id="co-current_city" placeholder=""  title="The city in which the co-borrower's present address is located.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> State <span class="red">*</span></label>
+                     <select class="form-control required42 co_state" name="co_borrower_present_state" id="co_borrower_pre_state" title="The state in which the co-borrower's present address is located.">
+                     	<option value="">Select State</option>
+                     	               <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+                     	<!--   <?php foreach ($states as $state) : ?>
+               <option value="<?php echo $state->StateCode; ?>" <?php echo (getFormValue($lead,'co_borrower_present_state') == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+               <?php endforeach; ?>--> 
+            </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> ZIP <span class="red">*</span></label>
+                      <input type="text" class="form-control required42 zip co_zip"  name="co_borrower_present_zip" id="co-current-zip" placeholder=""  title="The zip code in which the co-borrower's present address is located.">
+                    </div>
+                     <input type="hidden" id="is_co_address_valid" value="1">
+                          <div class="col-sm-3 address_err" style="display: none;">
+      Address you entered is not valid
+   </div>
+                  </div>
+                  <h4 class="text-left"> Years at this Address </h4>
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                      <label class="control-label"> Years <span class="red">*</span></label>
+                      <input type="text" class="form-control year required42" name="co_borrower_present_year" id="co-current-year" placeholder="" maxlength="20"  title="The number of years and months at the present address.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> Months </label>
+                      <input type="text" class="form-control month numberBox" name="co_borrower_present_month" id="co-current-month" placeholder="" maxlength="20" min="1" max="11"  title="The number of years and months at the present address.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> Rent/Own <span class="red">*</span></label>
+                      <select name="co_borrower_present_house_type" class="form-control required42" id="co_borrower_present_house_type">
+                       <option value="">Select Rent/Own</option>
+                        <option  value="Rent" title ="The present residence is rented by the coborrower."> Rent </option>
+                        <option  value="Own" title ="The present residence is rented by the coborrower."> Own </option>
+                      </select>
+                    </div>
+                    <div id="co_rent">
+                    <div class="col-sm-3">
+                      <label class="control-label"> Rent Amount </label>
+                      <input type="text" class="form-control money" name="co_barrower_rent_amount" id="co_barrower_rent_amount" maxlength="50" placeholder="" >
+                    </div>
+                  </div>
+                  </div>
+                 <input type='hidden' value='Off' name='co_borrower_mailing_address_status'>
+                  <div class="form-group row">
+                    <div class="col-sm-5 text-left">
+                      <label for="co-bar" class="col-form-label lbl_co_borrow">Mailing address same as current address? </label>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="toggle_text"> <span> NO </span>
+                        <input type="checkbox" id="co_borrower_mailing_address_status" class="cbx hidden" name="co_borrower_mailing_address_status" />
+                        <label for="co_borrower_mailing_address_status" class="lbl"></label>
+                        <span> YES </span> </div>
+                    </div>
+                  </div>
+           
+                  <h4 class="text-left"> Mailing Address? </h4>
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                      <label class="control-label"> Street Address <span class="red">*</span></label>
+                      <input type="text" class="form-control required42" name="co_borrower_mailing_address" id="co_borrower_mailing_address"  maxlength="155" placeholder=""  title="The co-borrower's street address for mailing.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> City <span class="red">*</span></label>
+                      <input type="text" name="co_borrower_mailing_city" class="form-control required42" id="co_borrower_mail_city" maxlength="35"  placeholder=""  title="The city in which the co-borrower's mailing address is located.">
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> State <span class="red">*</span></label>
+                       <select class="form-control required42" name="co_borrower_mailing_state" id="co-borrower-mail-state" title="The state in which the co-borrower's mailing address is located.">
+                       	 <option value="">Select State</option>
+                       	          <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+                   <!-- <?php foreach ($states as $state) : ?>
+                   <option value="<?php echo $state->StateCode; ?>" <?php echo (getFormValue($lead,'co_borrower_mailing_state') == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+                   <?php endforeach; ?> -->
+                </select>
+                    </div>
+                    <div class="col-sm-3">
+                      <label class="control-label"> ZIP <span class="red">*</span></label>
+                      <input type="text"  class="form-control zip required42"  name="co_borrower_mailing_zip" id="co_borrower_mailing_zip" placeholder=""  title="The zip code in which the co-borrower's mailing address is located.">
+                    </div>
+                    <input type="hidden" id="is_co_mail_address_valid" value="1">
+                          <div class="col-sm-3 address_er" style="display: none;">
+      Address you entered is not valid
+   </div>
+                  </div>
+             
+</div>
+              <div class="form-group row text-center">
+                <div class="col-sm-7 col-sm-offset-3 ">
+                 <button class="btn btn_previous btn_custom btn_inline" id="btn_prev"> <i class="fa fa-chevron-left"></i> Previous</button>
+<button class="btn btn_next btn_custom btn_inline" id="btn_next" > <i class="fa fa-chevron-right">Next</i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

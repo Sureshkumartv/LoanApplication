@@ -1,0 +1,272 @@
+<div role="tabpanel" class="tab-pane active" id="assets"
+	th:fragment="form">
+	<script th:src="@{/assets/js/custom/longapp/assets.js}"></script>
+	<div class="custom-tab-content text-center">
+		<div class="container">
+			<div class="sec-inner ">
+				<div class="row">
+					<div class="col-md-8 text-left">
+						<div class="center-box form_start">
+							<!-- <h2>Assets</h2> -->
+							<h2 class="assets_heading">[[${app_assets.accountOwner ==
+								'coborr' ?'Co Borrower ' :'Borrower ' }]] Assets</h2>
+							<form class="form-horizontal" method="POST" id="form_app_assets"
+								th:object="${app_assets}" th:modelAttribute="loan_app">
+								<!-- <input type="hidden" id="assetid" name="assetid" value=""> -->
+								<div class="form-group row">
+									<div class="col-sm-5 text-left">
+										<label for="1_asset_1_account_owner"
+											class="col-form-label lbl_co_borrow"> Account Owner <span
+											class="red">*</span></label>
+									</div>
+									<div class="col-sm-7 text-left">
+										<select class="form-control accountOwner assetsrequired"
+											id="accountOwner" th:field="*{accountOwner}">
+											<option value="borr">[[${app_start == null ? '':
+												app_start.borrowerFullName}]]</option>
+											<option value="coborr"
+												th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}">[[${app_start
+												== null ? '': app_start.coBorrowerFullName}]]</option>
+
+										</select>
+									</div>
+								</div>
+								<div class="borr_assets"
+									th:style="${app_assets.accountOwner == null || app_assets.accountOwner == 'borr' ?'' :'display:none;' }">
+									<div class="form-group row">
+
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Checking</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												th:field="*{accountChecking}" id="accountChecking">
+										</div>
+
+									</div>
+									<div class="form-group row ">
+
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Savings</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												th:field="*{savings}" id="savings">
+										</div>
+
+
+									</div>
+									<div class="form-group row  ">
+
+										<div class="col-sm-5 co-xs-12 ">
+											<label class="control-label">Others </label> <select
+												class="form-control" id="borrower_income_type_1"
+												th:field="*{otherAccounts}">
+												<option value="Money Market">Money Market</option>
+												<option value="Mutual Fund">Mutual Fund</option>
+												<option value="Stocks, Bonds">Stocks, Bonds</option>
+												<option value="Retirement(401k,IRA)">Retirement(401k,IRA)</option>
+												<option value="Other(specify below)">Other(specify
+													below)</option>
+											</select>
+										</div>
+										<div class="col-sm-7 co-xs-12 ">
+											<label class="control-label">Account Balance<span
+												class="red">*</span></label> <input
+												class="form-control money assetsrequired " type="tel"
+												th:field="*{accountBalance}" id="accountBalance" />
+										</div>
+									</div>
+									<div class="form-group row  ">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												If others, plz specify </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												name="1_asset_1_account_balance"
+												id="1_asset_1_account_balance">
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Total Assets </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{totalAssets}" id="totalAssets">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												How much money are you putting down </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{downPayment}" id="downPayment">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												What portion of your down payment,if any , will be a gift</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{portionDownpayment}" id="portionDownpayment">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-7 text-left">
+											<label class="col-form-label lbl_co_borrow"> Do you
+												own an other properties?</label>
+										</div>
+										<div class="col-sm-4 text-left">
+											<div class="toggle_text">
+												<span> NO </span> <input type="checkbox"
+													th:field="*{otherProperties}" id="otherProperties"
+													class="cbx hidden" value="Yes"> <label
+													for="otherProperties" class="lbl"></label> <span>
+													YES </span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="coborr_assets"
+									th:style="${app_assets.accountOwner == 'coborr' ?'' :'display:none;' }">
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Checking</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												th:field="*{coAccountChecking}" id="coAccountChecking">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Savings</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												th:field="*{coSavings}" id="coSavings">
+										</div>
+									</div>
+									<div class="form-group row  ">
+										<div class="col-sm-5 co-xs-12 ">
+											<label class="control-label">Others </label> <select
+												class="form-control" id="borrower_income_type_1"
+												th:field="*{coOtherAccounts}">
+												<option value="Money Market">Money Market</option>
+												<option value="Mutual Fund">Mutual Fund</option>
+												<option value="Stocks, Bonds">Stocks, Bonds</option>
+												<option value="Retirement(401k,IRA)">Retirement(401k,IRA)</option>
+												<option value="Other(specify below)">Other(specify
+													below)</option>
+											</select>
+										</div>
+										<div class="col-sm-7 co-xs-12 ">
+											<label class="control-label">Account Balance<span
+												class="red">*</span></label> <input
+												class="form-control money assetscorequired " type="tel"
+												th:field="*{coAccountBalance}" id="coAccountBalance" />
+										</div>
+									</div>
+									<div class="form-group row  ">
+
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												If others, plz specify </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control  " placeholder="" type="text"
+												name="1_asset_1_account_balance"
+												id="1_asset_1_account_balance">
+										</div>
+
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												Total Assets </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{coTotalAssets}" id="coTotalAssets">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												How much money are you putting down </label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{coDownPayment}" id="coDownPayment">
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-5 text-left">
+											<label for="co-bar" class="col-form-label lbl_co_borrow">
+												What portion of your down payment,if any , will be a gift</label>
+										</div>
+										<div class="col-sm-7 text-left">
+											<input class="form-control money " placeholder="" type="text"
+												th:field="*{coPortionDownpayment}" id="coPortionDownpayment">
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-7 text-left">
+										<label class="col-form-label lbl_co_borrow"> Do you
+											own an other properties?</label>
+									</div>
+									<div class="col-sm-4 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coOtherProperties}" id="coOtherProperties"
+												class="cbx hidden" value="Yes"> <label
+												for="coOtherProperties" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+						</div>
+
+						</form>
+
+					</div>
+
+
+
+
+					<div class="form-group row text-center">
+						<div class="col-sm-7 col-sm-offset-3 ">
+							<button class="btn btn_previous btn_custom btn_inline"
+								id="btn_prev_app_assets">
+								<i class="fa fa-chevron-left"></i> Previous
+							</button>
+							<button class="btn btn_next btn_custom btn_inline"
+								id="btn_next_app_assets">
+								Next <i class="fa fa-chevron-right"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+</form>

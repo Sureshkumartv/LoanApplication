@@ -1,0 +1,107 @@
+
+
+
+<menu th:fragment="menu">
+	<!-- Start of the menu  -->
+	<div class="app-tabs menu-tabs">
+		<ul class="nav nav-tabs" role="tablist">
+			<li id="li_app_start" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.startSubmit ==null? '' : 'test'}">
+				<a href="#app_start" aria-controls="home" role="tab"
+				data-toggle="tab" aria-expanded="true"> <i class="fa fa-home"></i><br />
+					<span class="lbl-txt">Start</span> <br class="dis_hide" />
+				<span class="badge_cir" style="display: none;"><i
+						class="fa fa-check"></i></span>
+			</a> <span class="line"></span>
+
+			</li>
+
+			<li id="li_app_consents" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.startSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_consents" aria-controls="profile" role="tab"
+				data-toggle="tab"> <i class="fa fa-user"></i><br /> <span
+					class="lbl-txt">Consents </span> <br class="dis_hide" /> <span
+					class="badge_cir" style="display: none;"> <i
+						class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span> <span class='round-tab'
+				style="display: none;"> <i class='fa fa-check'></i>
+			</span>
+			</li>
+			<li id="li_app_purpose" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.consentsSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_purpose" aria-controls="messages" role="tab"
+				data-toggle="tab"> <i class="fa fa-envelope-o"></i><br /> <span>
+						Purpose </span> <br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span> <span class='round-tab'
+				style="display: none;"> <i class='fa fa-check'></i>
+			</span>
+			</li>
+			<li id="li_app_personal" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.purposeSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_personal" aria-controls="settings" role="tab"
+				data-toggle="tab"> <i class="fa fa-cog"></i><br /> <span>Personal
+				</span> <br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span>
+
+			</li>
+
+			<li id="li_app_assets" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.personalSubmit == null? 'disabled' : 'test'}" >
+				<a href="#app_assets" aria-controls="messages" role="tab"
+				data-toggle="tab"> <i class="fa fa-envelope-o"></i><br /> <span>Assets
+				</span> <br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span>
+
+			</li>
+
+			<li id="li_app_declaration" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.assetsSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_declaration" aria-controls="profile" role="tab"
+				data-toggle="tab"> <i class="fa fa-user"></i><br /> <span>
+						Declaration</span> <br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span>
+
+			</li>
+			<li id="li_app_income" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.declarationSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_income" aria-controls="home" role="tab"
+				data-toggle="tab"> <i class="fa fa-home"></i><br /> <span>Income</span>
+					<br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i></span>
+			</a> <span class="line"></span>
+
+			</li>
+			<li id="li_app_preview" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.incomeSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_preview" aria-controls="settings" role="tab"
+				data-toggle="tab"> <i class="fa fa-cog"></i><br /> <span>Preview</span>
+					<br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a> <span class="line"></span>
+
+			</li>
+			<li id="li_app_confirmation" role="presentation" class=""
+				th:classappend="${app_flag==null || app_flag.previewSubmit == null? 'disabled' : 'test'}">
+				<a href="#app_confirmation" aria-controls="settings" role="tab"
+				data-toggle="tab"> <i class="fa fa-plus-square-o"></i><br /> <span>Confirmation</span>
+					<br class="dis_hide" /> <span class="badge_cir"
+					style="display: none;"> <i class="fa fa-check"></i>
+				</span>
+			</a>
+
+			</li>
+		</ul>
+	</div>
+
+	<!-- End of the menu  -->
+</menu>

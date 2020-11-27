@@ -1,0 +1,176 @@
+<div id="emp_div" class="tabForms" style="display: none;"
+	th:fragment="tabForms">
+	<h2>Employment</h2>
+	<form class="form-horizontal" method="POST" id="form_app_employement" 
+							th:object="${app_employement}" th:modelAttribute="loan_app"
+		>
+		<input type="hidden" id="incomeid_emp" th:field="*{incomeId}"  value="">
+		<div class="form-group row">
+			<div class="col-sm-5 text-left">
+				<label for="employment_owner_emp"
+					class="col-form-label lbl_co_borrow"> <span class="red">*</span>
+					Employee
+				</label>
+			</div>
+			<div class="col-sm-7 text-left">
+				<select class="form-control required62" id="employment_owner_emp"
+					th:field="*{borrowerName}">
+					<option value="borr">[[${app_start == null ? '':
+						app_start.borrowerFullName}]]</option>
+					<option th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}" value="coborr">[[${app_start == null ? '':
+						app_start.coBorrowerFullName}]]</option>
+
+
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label class="control-label"> Employer Name <span
+					class="red">*</span></label> <input type="text"
+					class="form-control required71 borr_emp_field borr_employer_name_field"
+					th:field="*{employerName}"  maxlength="45"
+					id="borrower_employer_name_1" placeholder=""
+					title="The name of the borrower's employer.">
+			</div>
+			<div class="col-sm-4">
+				<label class="control-label">Current Employer<span
+					class="red">*</span></label> <select th:field="*{currentEmployer}"
+					id="borrower_current_employer"
+					class="form-control required71 borr_emp_field">
+					<option value=""></option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+
+				</select>
+
+			</div>
+
+			<div class="col-sm-4">
+				<label class="control-label">Employer Corporate Phone Number</label>
+				<input type="tel" class="form-control phone"
+					th:field="*{employerCorporatePhoneNumber}"
+					id="borrower_employer_work_phone_1" placeholder=""
+					title="The borrower's cell phone number.">
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<div class="col-sm-3">
+				<label class="control-label"> Employer Address </label> <input
+					type="text" class="form-control" th:field="*{employerAddress}"
+					maxlength="70" id="borrower_employer_address_1" placeholder=""
+					title="The borrower's present street address.">
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Employer City </label> <input
+					class="form-control" th:field="*{employerCity}"  maxlength="50"
+					id="borrower_employer_city_1" placeholder=""
+					title="The city in which the borrower's present address is located.">
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Employer State </label>
+					<select class="form-control" th:value="*{employerState}" name="currentState" id="currentState" required="required">
+											
+											<option th:each="state : ${states}" th:value="${state.propertyCode}"
+												th:text="${state.propertyState}"></option>
+										</select>
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Employer ZIP </label> <input
+					type="text" class="form-control zip" th:field="*{employerZip}" 
+					id="borrower_employer_zip_1" placeholder=""
+					title="The zip code in which the borrower's present address is located.">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label class="control-label"> Start Date</label> <input type="text"
+					title="The date the employee was hired by the employer."
+					class="form-control date" placeholder="mm/dd/yyyy"
+					th:field="*{startDate}" 
+					id="borrower_employer_start_date_1">
+			</div>
+			<div class="col-sm-4">
+				<label class="control-label"> Job Title <span class="red">*</span></label>
+				<input type="text" class="form-control required71 borr_emp_field"
+					th:field="*{jobTitle}"  maxlength="45"
+					id="borrower_employer_position_1" placeholder=""
+					title="The borrower's position or job title.">
+			</div>
+			<div class="col-sm-4">
+				<label class="control-label"> Years in Profession <span
+					class="red">*</span></label> <input type="text"
+					class="form-control year borr_emp_field required71"
+					th:field="*{totalExpr}" maxlength="2"
+					id="borrower_employer_years_line_work_1" placeholder=""
+					title="The number of years the borrower has worked in this type of occupation or business.">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-6">
+				<label class="control-label"> Pay Type</label> <select
+					class="form-control" id="borrower_income_type_1"
+					th:field="*{payType}">
+					<option value="Salaried">Salaried</option>
+					<option value="Hourly">Hourly</option>
+				</select>
+			</div>
+			<div class="col-sm-6">
+				<label class="control-label"> Annual Base Salary <span
+					class="red">*</span></label> <input type="text"
+					class="form-control money required71"
+					th:field="*{anualBaseSalary}" 
+					id="borrower_employer_base_income_1">
+			</div>
+			<!-- <div id="hourly" style="display: none;">
+				<div class="col-sm-6">
+					<label class="control-label"> Hourly Rate</label> <input
+						type="text" class="form-control money borr_emp_field"
+						th:field="*{anualBaseSalary}"  name="borrower_hourly_rate_1" maxlength="20"
+						id="borrower_hourly_rate" placeholder="">
+				</div>
+				<div class="col-sm-6">
+					<label class="control-label"> Hours/ Week </label> <input
+						type="text" class="form-control borr_emp_field"
+						name="borrower_avg_hours_worked_1" maxlength="20"
+						id="borrower_avg_hours_worked" placeholder="" value="">
+				</div>
+			</div> -->
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-4">
+				<label class="control-label"> Annual Overtime (if
+					applicable) </label> <input type="text"
+					class="form-control money borr_emp_field"
+					th:field="*{payannualOvertimeType}"  
+					id="borrower_monthliy_overtime_amount" maxlength="20"
+					placeholder="" value=""
+					title="The employee's average monthly income from overtime.">
+			</div>
+			<div class="col-sm-4">
+				<label class="control-label"> Annual Bonus (if applicable) </label>
+				<input type="text" class="form-control money borr_emp_field"
+					th:field="*{annualBonus}"  maxlength="20"
+					id="borrower_employer_bonus_amount" placeholder="" value=""
+					title="The employee's average monthly income from bonuses.">
+			</div>
+			<div class="col-sm-4">
+				<label class="control-label"> Annual Commission (if
+					applicable)</label> <input type="text"
+					class="form-control money borr_emp_field"
+					th:field="*{annualCommission}" maxlength="20"
+					id="borrower_employer_commision_amount" placeholder="" value=""
+					title="The employee's average monthly income from commissions.">
+			</div>
+		</div>
+		<div class="form-group row text-center">
+			<div class="col-sm-12">
+				<button class="btn btn_custom btn_inline" id="backbutton_emp_1">Back</button>
+				<button class="btn btn_add_income btn_custom btn_inline"
+					id="btn_add_income_app_employement">Add Income</button>
+			</div>
+		</div>
+	</form>
+
+</div>

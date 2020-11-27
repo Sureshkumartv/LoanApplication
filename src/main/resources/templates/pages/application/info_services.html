@@ -1,0 +1,466 @@
+<form th:fragment="form">
+	<style type="text/css">
+#footer {
+	position: static;
+}
+</style>
+
+<script th:src="@{/assets/js/custom/longapp/loaninfo.js}"></script>
+
+
+	<div role="tabpanel" class="tab-pane active" id="loan">
+		<div class="custom-tab-content">
+			<div class="container">
+				<div class="row text-center">
+					<div class="sec-inner consent_main">
+						<div class="center-box form_start">
+							<h2>Loan Info</h2>
+							<form class="form-horizontal" method="POST"
+								id="form">
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<h4>
+											<span class="red left_sp">*</span>
+											<p class="left_sp_txt">Information for Government
+												Monitoring :</p>
+										</h4>
+									</div>
+									<div class="col-sm-12">
+										<div class="consents_text text-left">
+											<p>The following information is requested by the federal
+												government for certain types of loans related to a dwelling
+												in order to monitor the lender's compliance with equal
+												credit opportunity, fair housing, and home mortgage
+												disclosure laws. You are not required to furnish this
+												information, but are encouraged to do so, you may select one
+												or more designations for Race. The law provides that a
+												lender may not discriminate on the basis of this application
+												in person, under federal regulations the lender is required
+												to note ethnicity, race, and sex on the basis of visual
+												observation or surname.</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="col-md-12">
+										<div class="form-group row">
+											<div class="col-sm-12 text-left">
+												<label for="co-bar" class="col-form-label lbl_co_borrow">
+													<h3>Ethnicity</h3>
+												</label>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="ethnicity" id="gov_b_ethnicity_hispanic" name="gov_b_ethnicity" value="Hispanic or Latino"> <label
+														for="gov_b_ethnicity_hispanic"> 
+														<p>Hispanic or latino</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="ethnicity"
+														id="gov_b_ethnicity_idont" name="gov_b_ethnicity"
+														value="I do not wish to furnish this information"> <label
+														for="gov_b_ethnicity_idont">
+														<p>I do not wish to furnish this information</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="ethnicity"
+														id="gov_b_ethnicity_nothisp" name="gov_b_ethnicity"
+														value="Not Hispanic or latino"> <label
+														for="gov_b_ethnicity_nothisp">
+														<p>Not Hispanic or latino</p>
+														</p>
+													</label>
+												</div>
+											</div>
+
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="ethnicity"
+														id="gov_b_ethnicity_info" name="gov_b_ethnicity"
+														value="Information Not Provided"> <label
+														for="gov_b_ethnicity_info">
+														<p>Information Not Provided</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="ethnicity"
+														id="gov_b_ethnicity_not" name="gov_b_ethnicity"
+														value="Not Applicable"> <label
+														for="gov_b_ethnicity_not">
+														<p>Not Applicable</p>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group row">
+											<div class="col-sm-12 text-left">
+												<label for="co-bar" class="col-form-label lbl_co_borrow">
+													<h3>Race</h3>
+												</label>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox"
+														id="b_american_indian_or_alaska_native" class="race"
+														name="b_asian" value="American Indian or Alaska Native"> <label
+														for="b_american_indian_or_alaska_native">
+														<p>American Indian or Alaska Native</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_Asian" class="race"
+														name="b_asian" value="Asian">
+													<label for="b_Asian">
+														<p>Asian</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_african" class="race"
+														name="b_asian" value="Black or African American"> <label for="b_african">
+														<p>Black or African American</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_hawain" class="race"
+														name="b_asian"
+														value="Native Hawaiian or other pacific islander"> <label
+														for="b_hawain">
+														<p>Native Hawaiian or other pacific islander</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_White" class="race"
+														name="b_asian" value="White">
+													<label for="b_White">
+														<p>White</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_idont" class="race"
+														name="b_asian" value="White"> <label for="b_idont">
+														<p>I do not wish to provide the information</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_info" class="race"
+														name="b_asian" value="Information Not Provided"> <label for="b_info">
+														<p>Information Not Provided</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" id="b_app" class="race"
+														name="b_asian" value="Not Applicable"> <label for="b_app">
+														<p>Not Applicable</p>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group row">
+											<div class="col-sm-12 text-left">
+												<label for="co-bar" class="col-form-label lbl_co_borrow"><h3>
+														Sex</h3></label>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="sex" id="gov_b_sex_male"
+														name="gov_b_sex" value="Male"> <label for="gov_b_sex_male">
+														<p>Male</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="sex" id="gov_b_sex_female"
+														name="gov_b_sex" value="Female"> <label for="gov_b_sex_female">
+														<p>Female</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="sex" id="gov_b_sex_idont"
+														name="gov_b_sex"
+														value="I do not wish to provide the information"> <label
+														for="gov_b_sex_idont">
+														<p>I do not wish to provide the information</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="sex" id="gov_b_sex_info"
+														name="gov_b_sex" value="Information Not Provided"> <label for="gov_b_sex_info">
+														<p>Information Not Provided</p>
+													</label>
+												</div>
+											</div>
+											<div class="col-sm-12 text-left">
+												<div class="custom_select">
+													<input type="checkbox" class="sex"
+														id="gov_b_sex_notapllicable" name="gov_b_sex"
+														value="Not Applicable"> <label for="gov_b_sex_notapllicable">
+														<p>Not Applicable</p>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+
+
+
+
+								<div id="co_borrower_info_" style="display: none;">
+
+									<div class="col-md-6">
+										<div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-sm-12 text-left">
+													<label for="co-bar" class="col-form-label lbl_co_borrow"><h3>
+															Ethnicity</h3> </label>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_ethnicity"
+															id="gov_co_ethnicity_hispanic" name="gov_co_ethnicity"
+															value="Hispanic or Latino"> <label
+															for="gov_co_ethnicity_hispanic">
+															<p>Hispanic or latino</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_ethnicity"
+															id="gov_co_ethnicity_idont" name="gov_co_ethnicity"
+															value="I do not wish to furnish this information"> <label
+															for="gov_co_ethnicity_idont">
+															<p>I do not wish to furnish this information</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_ethnicity"
+															id="gov_co_ethnicity_nothisp" name="gov_co_ethnicity"
+															value="Not Hispanic or latino"> <label
+															for="gov_co_ethnicity_nothisp">
+															<p>Not Hispanic or latino</p>
+														</label>
+													</div>
+												</div>
+
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_ethnicity"
+															id="gov_co_ethnicity_info" name="gov_co_ethnicity"
+															value="Information Not Provided"> <label
+															for="gov_co_ethnicity_info">
+															<p>Information Not Provided</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_ethnicity"
+															id="gov_co_ethnicity_not" name="gov_co_ethnicity"
+															value="Not Applicable"> <label
+															for="gov_co_ethnicity_not">
+															<p>Not Applicable</p>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-sm-12 text-left">
+													<label for="co-bar" class="col-form-label lbl_co_borrow"><h3>
+															Race</h3> </label>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox"
+															id="co_american_indian_or_alaska_native" class="co_race"
+															name="co_asian" value="American Indian or Alaska Native"> <label
+															for="co_american_indian_or_alaska_native">
+															<p>American Indian or Alaska Native</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_Asian" class="co_race"
+															name="co_asian" value="Asian"> <label for="co_Asian"><p>Asian</p></label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_african" class="co_race"
+															name="co_asian" value="Black or African American"> <label for="co_african">
+															<p>Black or African American</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_hawain" class="co_race"
+															name="co_asian"
+															value="Native Hawaiian or other pacific islander"> <label
+															for="co_hawain">
+															<p>Native Hawaiian or other pacific islander</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_White" class="co_race"
+															name="co_asian" value="White"> <label for="co_White">
+															<p>White</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_idont" class="co_race"
+															name="co_asian" value="White"> <label for="co_idont">
+															<p>I do not wish to provide the information</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_info" class="co_race"
+															name="co_asian" value="Information Not Provided"> <label for="co_info">
+															<p>Information Not Provided</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" id="co_app" class="co_race"
+															name="co_asian" value="Not Applicable"> <label for="co_app">
+															<p>Not Applicable</p>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group row">
+												<div class="col-sm-12 text-left">
+													<label for="co-bar" class="col-form-label lbl_co_borrow"><h3>
+															Sex</h3></label>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_sex" id="gov_co_sex_male"
+															name="gov_co_sex" value="Male"> <label for="gov_co_sex_male">
+															<p>Male</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_sex"
+															id="gov_co_sex_female" name="gov_co_sex" value="Female"> <label for="gov_co_sex_female">
+															<p>Female</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_sex"
+															id="gov_co_sex_idont" name="gov_co_sex"
+															value="I do not wish to provide the information"> <label
+															for="gov_co_sex_idont"><p>I do not wish to
+																provide the information</p></label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_sex" id="gov_co_sex_info"
+															name="gov_co_sex" value="Information Not Provided"> <label for="gov_co_sex_info">
+															<p>Information Not Provided</p>
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 text-left">
+													<div class="custom_select">
+														<input type="checkbox" class="co_sex"
+															id="gov_co_sex_notapllicable" name="gov_co_sex"
+															value="Not Applicable"> <label
+															for="gov_co_sex_notapllicable">
+															<p>Not Applicable</p>
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+
+
+								<div class="form-group row text-center">
+									<div class="col-sm-7 col-sm-offset-3 ">
+										<button class="btn btn_previous btn_custom btn_inline"
+											id="btn_prev">
+											<i class="fa fa-chevron-left"></i> Previous
+										</button>
+										<button class="btn btn_next btn_custom btn_inline"
+											id="btn_next">
+											Next <i class="fa fa-chevron-right"></i>
+										</button>
+									</div>
+								</div>
+
+							</form>
+
+							<br />
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</form>

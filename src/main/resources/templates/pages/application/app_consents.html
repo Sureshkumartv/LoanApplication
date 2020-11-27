@@ -1,0 +1,217 @@
+
+
+<div role="tabpanel" class="tab-pane active" id="consents"
+	th:fragment="form">
+	<style type="text/css">
+#footer {
+	position: static;
+}
+</style>
+
+	<script th:src="@{/assets/js/custom/longapp/consents.js}"></script>
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row text-center">
+				<div class="sec-inner consent_main">
+					<div class="center-box form_start">
+						<h2>Consents</h2>
+						<form method="POST" class="form-horizontal" id="form_app_consents"
+							th:object="${app_consents}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="col-sm-12 text-left">
+									<h4>
+										<span class="red left_sp">*</span>
+										<p class="left_sp_txt">Authorization to Obtain Credit
+											Report :</p>
+									</h4>
+								</div>
+								<div class="col-sm-12 ">
+									<div class="consents_text text-left" id="first">
+										<p>We will need to review your consumer report (sometimes
+											called a "credit report") from a consumer reporting agency to
+											determine whether you can be prequalified for a residential
+											mortgage loan. We request your authorization to allow us to
+											do so below, and will obtain a credit report on you upon
+											obtaining your authorization. Upon request, we will provide
+											you with the name and address of the consumer reporting
+											subsequent credit report(s) on you as part of our evaluatio
+											of your application.</p>
+
+										<br />
+
+
+										<p>Authorization on behalf of Individual Consumer: By
+											clicking "I agree" below I authorize Reliance First Capital
+											to obtain one or more consumer credit reports on me in
+											connection with my prequalification request, inquiry or
+											request for an extension of credit.</p>
+										<div class="form-group row">
+											<div class="col-md-6 col-md-6  text-left">
+												<div class="lbl_agree">
+													<div class="custom_select">
+														<input type="checkbox" name="borrowerCreditCheck"
+															th:checked="*{borrowerCreditCheck}"
+															class="required firstdiv" id="borrower_credit_check"
+															value="1" /> <label for="borrower_credit_check"
+															style="width: unset"> I AGREE (<span
+															class="consent1">[[${app_start == null ? '':
+																app_start.borrowerFullName}]]<span> ) </label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="coborrw"
+											th:style="${app_start.coBorrowerStatus == 'Yes' ? '' :'display:none'}">
+
+											<p>Authorization on behalf of spouse or partner : By
+												clicking "I agree" below 1: (i) authorize on behalf of my
+												spouse or domestic partner Reliance First Capital to obtain
+												one or more consumer credit reports on my spouse or domestic
+												partner in connection with my prequalification request,
+												inquiry or request fro an extension of credit: and (ii)
+												confirm that my spouse or domestic partner has authorized me
+												to provide this consent on her/his behalf, and that I can
+												and will provide written evidence of this authorization, if
+												requested.</p>
+											<div class="form-group row">
+												<div class="col-md-6 col-md-6  text-left">
+													<div class="lbl_agree">
+														<div class="custom_select">
+															<input type="checkbox" name="coBorrowerCreditCheck"
+																th:checked="*{coBorrowerCreditCheck}"
+																class="co_required" id="co_borrower_credit_check"
+																value="1" /> <label for="co_borrower_credit_check"
+																style="width: unset"> I AGREE (<span
+																class="consent1">[[${app_start == null ? '':
+																	app_start.coBorrowerFullName}]]<span> ) </label>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-12 text-left">
+									<h4>
+										<span class="red left_sp">*</span>
+										<p class="left_sp_txt">Authorization to be Contacted.</p>
+									</h4>
+								</div>
+								<div class="col-sm-12">
+									<div class="consents_text text-left" id="last">
+										<p>By clicking "I agree" below I authorize Reliance First
+											Capital to deliver or cause to be delivered telephone calls
+											or texts messages using an automatic telephone dailing system
+											or an artificial or prerecorded voice to the residentaial
+											land line or wireless number(s) you have provided in this
+											portal. You also acknowledge that you are not required to
+											provide this authorization as a condition of obtaining a loan
+											product offered by Reliance First Capital.</p>
+										<div class="form-group row">
+											<div class="col-md-6 col-md-6  text-left">
+												<div class="lbl_agree">
+													<div class="custom_select">
+														<input type="checkbox" name="borrowerMessageCheck"
+															th:checked="*{borrowerMessageCheck}" class="required"
+															id="borrowerMessageCheck" value="1" /> <label
+															for="borrowerMessageCheck" style="width: unset">
+															I AGREE (<span class="consent1">[[${app_start ==
+																null ? '': app_start.borrowerFullName}]]<span> )
+
+															
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<p>By clicking "I agree" below I authorize Reliance First
+											Capital to deliver or cause to be delivered telephone calls
+											made for advertising purposes or that constitute
+											telemarketing to the residential land line or wireless
+											number(s) you have provided in this portal even if any of the
+											number(s) listed you have provided have been added to
+											Reliance First Capital's company specific do-not call list,
+											or to the nationwide do-not call registry or any relevant
+											state do-not call registry. You also acknowledge that you are
+											not required to provide this authorization as a condition of
+											obtaining a loan product offered by Reliance First Capital.</p>
+										<div class="form-group row">
+											<div class="col-md-6 col-md-6  text-left">
+												<div class="lbl_agree">
+													<div class="custom_select">
+														<input type="checkbox" name="borrowerAdvertisingCheck"
+															th:checked="*{borrowerAdvertisingCheck}" class="required"
+															id="borrowerAdvertisingCheck" value="1" /> <label
+															for="borrowerAdvertisingCheck" style="width: unset">
+															I AGREE (<span class="consent1">[[${app_start ==
+																null ? '': app_start.borrowerFullName}]]<span> )
+															
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<p>By clicking "I agree" below I consent to receive
+											electronic mail messages that advertise or promote a loan
+											product offered by Reliance First Capital ("Commercial
+											Emails"), even if I previously requested not to receive such
+											emails from Reliance First Capital. You also acknowledge that
+											you are not required to provide this authorization as a
+											condition of obtaining a loan product offered by Reliance
+											First Capital.</p>
+										<div class="form-group row">
+											<div class="col-md-6 col-md-6  text-left">
+												<div class="lbl_agree">
+													<div class="custom_select">
+														<input type="checkbox" name="borrowerOffersCheck"
+															th:checked="*{borrowerOffersCheck}" class="required"
+															id="borrowerOffersCheck" value="1" /> <label
+															for="borrowerOffersCheck" style="width: unset"> I
+															AGREE (<span class="consent1">[[${app_start ==
+																null ? '': app_start.borrowerFullName}]]<span> )
+
+															
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+								<!-- <div class="col-sm-12 coborr" th:style="${app_start.coBorrowerStatus == 'Yes' ? '' :'display:none'}">
+									
+								</div> -->
+
+
+							</div>
+							<div class="form-group row text-center">
+								<button class="btn btn_previous btn_custom btn_inline"
+									id="btn_prev_app_consents">
+									<i class="fa fa-chevron-left"></i> Previous
+								</button>
+								<button class="btn btn_next btn_custom btn_inline"
+									id="btn_next_app_consents">
+									Next <i class="fa fa-chevron-right"></i>
+								</button>
+							</div>
+
+						</form>
+
+					</div>
+
+					<br />
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

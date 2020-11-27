@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Techniecode Long App - Loan Application</title>
+<!--  Techniecode Start -->
+<style type="text/css">
+body {
+	
+}
+</style>
+<link th:href="@{/assets/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/responsive.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/bootstrap-datepicker.css}" rel="stylesheet" />
+<link th:href="@{/assets/css/bootstrap-datepicker.standalone.css}" rel="stylesheet" />
+
+<script th:src="@{/assets/js/jquery-3.0.0.min.js}"
+	type="text/javascript"></script>
+
+
+<script th:src="@{/assets/js/script.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/jquery.js}" type="text/javascript"></script>
+
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script th:src="@{/assets/js/bootstrap.min.js}" type="text/javascript"></script>
+<script th:src="@{/assets/js/bootstrap-datepicker.js}" type="text/javascript"></script>
+<!--  user form data Starts -->
+<!-- <script th:src="@{/assets/js/jquery.maskedinput.js}"
+	type="text/javascript"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js" integrity="sha512-yVcJYuVlmaPrv3FRfBYGbXaurHsB2cGmyHr4Rf1cxAS+IOe/tCqxWY/EoBKLoDknY4oI1BNJ1lSU2dxxGo9WDw==" crossorigin="anonymous"></script>
+
+<!--  Techniecode End -->
+
+<!--  user form data Ends -->
+<style type="text/css">
+body {
+	
+}
+
+.headcontainer {
+	width: 90%;
+	margin: 0px auto;
+}
+</style>
+
+<script th:inline="javascript">
+ 
+//${session.user.name}
+    var base_url = /*[[@{/}]]*/;
+
+ 
+</script>
+<th:block layout:fragment="headscripts">
+	<!-- Placeholder for page related javascript -->
+</th:block>
+</head>
+
+<body>
+	<header class="header-technie header-code">
+
+		<div class="container">
+			<div class="clearfix">
+				<div class="pull-left logo  col-md-3">
+					<a href="./"><img src="assets/images/RFC_Logo Transparent.png"
+						class="header_logo" alt="Logo" /></a>
+				</div>
+				<nav class="pull-left mainmenu-container  col-md-4"
+					th:if="${not session.isEmpty() && session.user!=null}">
+					<button class="mainmenu-toggler">
+						<i class="fa fa-bars"></i>
+					</button>
+					<ul style="display: block;">
+						<li><a href="#" style="font-size: 25px"><i class=""></i>
+								877-456-3220 </a></li>
+					</ul>
+				</nav>
+				<nav class="pull-right mainmenu-container">
+					<button class="mainmenu-toggler">
+						<i class="fa fa-bars"></i>
+					</button>
+
+					<ul th:if="${not session.isEmpty() && session.user!=null}">
+
+						<!-- <li><a href="#"><i class="fa fa-map-marker"></i> 113
+								Barksdale Professional Center, Newark, DE 19711.</a></li>
+						<li><a href="#"><i class="fa fa-envelope"></i>
+								info@techniecode.com </a></li> -->
+
+						<li><a href="#"><i class="fa fa-envelope"></i> Welcome
+								TEST Long App </a></li>
+						<li><a th:if="${not session.isEmpty() && session.user!=null}"
+							th:href="@{/logout}"> <i class="fa fa-sign-out fa-fw "></i>
+								Logout
+						</a></li>
+					</ul>
+
+				</nav>
+
+			</div>
+		</div>
+
+	</header>
+	<section class="login-form welcome-content">
+		<th:block layout:fragment="page_content">
+			<!-- Placeholder for content -->
+		</th:block>
+	</section>
+
+
+	<footer id="footer" class="dark" style="background-color: #2c3e50;">
+		<!-- Start of the footer  -->
+
+
+		<!-- Copyrights
+			============================================= -->
+		<div id="copyrights">
+			<div class="container clearfix">
+				<div class="col_half">© 2017 Techniecode Inc. All Rights
+					Reserved</div>
+				<div class="contact-info pull-right">
+					<div class="contact-details">
+						<div class="social-icons">
+							<a href="https://www.facebook.com/techniecodeinc" target="_blank">
+								<i class="fa fa-facebook"></i>
+							</a> <a href="https://twitter.com/Techniecodeinc" target="_blank">
+								<i class="fa fa-twitter"></i>
+							</a> <a href="https://www.linkedin.com/company/techniecode-inc-"
+								target="_blank"> <i class="fa fa-linkedin"></i>
+							</a> <a href="https://plus.google.com/+Techniecode" target="_blank">
+								<i class="fa fa-google-plus"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- #copyrights end -->
+
+		<!-- End of the footer  -->
+	</footer>
+
+	<!-- Include all the Javascript source files -->
+	<th:block layout:fragment="bodyscripts">
+		<!-- Placeholder for page related javascript -->
+	</th:block>
+</body>
+
+</html>

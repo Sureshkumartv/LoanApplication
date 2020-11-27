@@ -1,0 +1,622 @@
+<form th:fragment="form">
+	<style type="text/css">
+#footer {
+	position: static;
+}
+</style>
+	
+<!-- <script th:src="@{/assets/js/custome/longapp/employement.js}"></script> -->
+</script>
+<div role="tabpanel" class="tab-pane " id="Income">
+      <div class="custom-tab-content text-center">
+        <div class="container">
+          <div class="sec-inner">
+            <div class="row">
+              <div class="center-box income_form tbl_inc">
+                
+                <div id="added_income" style="display: none;">
+                	  <h2>Added Income</h2>
+				  
+				  
+                	  <div class="panel panel-default  thumbnail">
+                    
+                    <div class="panel-body">
+                      <div class="table-responsive preview_form">
+                	<table id="location1" border='1' class='table table-striped table-bordered'>
+    <thead>
+    	<tr class="bg_color">
+		<th class="text-center">Account Owner</th>
+        <th class="text-center">Income Type</th>
+         <th class="text-center">Income</th>
+          <th class="text-center">Edit</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</div>
+</div>
+</div>
+  <div class="form-group row text-center">
+                      <div class="col-sm-12">
+                      	<button class="btn btn_custom btn_inline" id="backbutton">Add Another</button>
+                       <button class="btn btn_next btn_custom btn_inline" id="btn_next">I'm Done</button>
+                      </div>
+                    </div>
+                </div>
+                <div id="buttonsDiv" class="cent-box">
+				<h2> Income </h2>
+                  <div class="item-box buttons "  id="button1"  data-datac="emp_div" >
+                    <div class="box-info"> <i><img src="../../../../../mainpages/tech/assets/images/Icon_1.png" alt="" ></i>
+                      <h4><span>Employment </span></h4>
+                    </div>
+                  </div>
+                  <div class="item-box buttons" id="button2"  data-datac="rental_div">
+                    <div class="box-info"> <i><img src="../../../../../mainpages/tech/assets/images/rent.png" alt="" ></i>
+                      <h4><span> Rentals </span></h4>
+                    </div>
+                  </div>
+                  <div class="item-box buttons" id="button3" data-datac="social_div">
+                    <div class="box-info"> <i><img src="../../../../../mainpages/tech/assets/images/ssn.png" alt="" ></i>
+                      <h4><span> Social Security </span></h4>
+                    </div>
+                  </div>
+                  <div class="item-box buttons" id="button4" data-datac="pension_div">
+                    <div class="box-info"> <i><img src="../../../../../mainpages/tech/assets/images/pension.png" alt="" ></i>
+                      <h4><span> Pension </span></h4>
+                    </div>
+                  </div>
+                  <div class="item-box buttons" id="button5" data-datac="others_div" >
+                    <div class="box-info"> <i><img src="../../../../../mainpages/tech/assets/images/other.png" alt="" ></i>
+                      <h4><span> Others </span></h4>
+                    </div>
+                  </div>
+                 
+           
+                </div>
+				
+				<div class="row text-center" id="nxtbut">
+                      <div class="col-sm-12">
+                       <button class="btn btn_previous btn_custom btn_inline" id="btn_prev"> <i class="fa fa-chevron-left"></i> Previous</button>
+						<button class="btn btn_next btn_custom btn_inline" id="btn_next">Next <i class="fa fa-chevron-right"></i></button>
+                      </div>
+                </div>   
+				
+				
+              </div>
+            </div>
+            <div class="row text-center">
+              <div class="center-box income_form">
+                <div id="emp_div" class="tabForms"  style="display:none;">
+				  <h2> Employment </h2>
+                  <form class="form-horizontal"  method="POST" id="form_employee">
+                  	<input type="hidden" id="incomeid_emp" name="incomeid" value="">
+					  <div class="form-group row">
+                      <div class="col-sm-5 text-left">
+                        <label for="employment_owner_emp" class="col-form-label lbl_co_borrow"> <span class="red">*</span> Employee </label>
+                      </div>
+                      <div class="col-sm-7 text-left">
+                        <select class="form-control required62" id="employment_owner_emp" name="employment_owner">
+                           <option value="Borrower">  </option>
+                          <option value="Co-Borrower"></option>
+                          
+    
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-4">
+                        <label class="control-label"> Employer Name <span class="red">*</span></label>
+                        <input type="text" class="form-control required71 borr_emp_field borr_employer_name_field" name="borrower_employer_name_1" maxlength="45"   id="borrower_employer_name_1" placeholder=""  title="The name of the borrower's employer.">
+                      </div>
+                      <div class="col-sm-4">
+                      	<label class="control-label">Current Employer<span class="red">*</span></label>
+                       <select  name="borrower_current_employer_1" id="borrower_current_employer" class="form-control required71 borr_emp_field">
+                      		<option value=""></option>
+                        <option value="Yes" > Yes </option>
+                        <option value="No" > No </option>
+                        
+                      </select>
+                        
+                      </div>
+
+                      <div class="col-sm-4">
+                        <label class="control-label">Employer Corporate Phone Number</label>
+                        <input type="tel" class="form-control phone" name="borrower_employer_work_phone_1" id="borrower_employer_work_phone_1" placeholder=""  title="The borrower's cell phone number.">
+                      </div>
+                    </div>
+
+              <div class="form-group row">
+                <div class="col-sm-3">
+                  <label class="control-label"> Employer Address </label>
+                  <input type="text" class="form-control" name="borrower_employer_address_1" maxlength="70" id="borrower_employer_address_1" placeholder=""  title="The borrower's present street address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Employer City </label>
+                  <input class="form-control" name="borrower_employer_city_1" maxlength="50" id="borrower_employer_city_1" placeholder=""  title="The city in which the borrower's present address is located.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Employer State </label>
+                  <select class="form-control" name="borrower_employer_state_1" id="borrower_employer_state_1" title="The state in which the borrower's present address is located.">
+               <option value="">Select State</option>
+          
+              <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+               <!-- <?php foreach ($states as $state) : ?>
+               <option value="<?php echo $state->StateCode; ?>" <?php echo ($lead['borrower_employer_state_1'] == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+               <?php endforeach; ?> -->
+            </select>
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Employer ZIP </label>
+                  <input type="text" class="form-control zip"  name="borrower_employer_zip_1" id="borrower_employer_zip_1" placeholder=""  title="The zip code in which the borrower's present address is located.">
+                </div>
+              </div>
+                    <div class="form-group row">
+                      <div class="col-sm-4">
+                        <label class="control-label"> Start Date</label>
+                        <input type="text"  title="The date the employee was hired by the employer." class="form-control date"  placeholder="mm/dd/yyyy"   name="borrower_employer_start_date_1"  id="borrower_employer_start_date_1" >
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Job Title <span class="red">*</span></label>
+                        <input type="text" class="form-control required71 borr_emp_field" name="borrower_employer_position_1" maxlength="45" id="borrower_employer_position_1" placeholder=""  title="The borrower's position or job title.">
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Years in Profession <span class="red">*</span></label>
+                        <input type="text" class="form-control year borr_emp_field required71" name="borrower_employer_years_line_work_1"  maxlength="2" id="borrower_employer_years_line_work_1" placeholder=""  title="The number of years the borrower has worked in this type of occupation or business.">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-6">
+                        <label class="control-label"> Pay Type</label>
+                        <select class="form-control" id="borrower_income_type_1" name="borrower_income_type_1">
+                          <option value="Salaried"> Salaried </option>
+                          <option value="Hourly">Hourly </option>
+                        </select>
+                      </div>
+                     <div class="col-sm-6">
+                        <label class="control-label"> Annual Base Salary <span class="red">*</span></label>
+                        <input type="text" class="form-control money required71"  name="borrower_employer_base_income_1" id="borrower_employer_base_income_1">
+                      </div>
+                      <div id="hourly" style="display: none;">
+                       <div class="col-sm-6">
+                        <label class="control-label"> Hourly Rate</label>
+                        <input type="text"  class="form-control money borr_emp_field" name="borrower_hourly_rate_1"  maxlength="20" id="borrower_hourly_rate" placeholder="" >
+                      </div>
+                       <div class="col-sm-6">
+                        <label class="control-label"> Hours/ Week </label>
+                        <input type="text" class="form-control borr_emp_field" name="borrower_avg_hours_worked_1"  maxlength="20" id="borrower_avg_hours_worked" placeholder="" value="">
+                      </div>
+                  </div>
+                    </div>
+                    <div class="form-group row">
+                    	 <div class="col-sm-4">
+                        <label class="control-label"> Annual Overtime (if applicable) </label>
+                        <input type="text" class="form-control money borr_emp_field" name="borrower_monthliy_overtime_amount_1" id="borrower_monthliy_overtime_amount" maxlength="20" placeholder="" value="" title="The employee's average monthly income from overtime.">
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Annual Bonus (if applicable) </label>
+                        <input type="text" class="form-control money borr_emp_field" name="borrower_employer_bonus_amount_1"  maxlength="20"  id="borrower_employer_bonus_amount" placeholder="" value="" title="The employee's average monthly income from bonuses.">
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Annual Commission (if applicable)</label>
+                        <input type="text" class="form-control money borr_emp_field" name="borrower_employer_commision_amount_1"  maxlength="20"  id="borrower_employer_commision_amount" placeholder="" value="" title="The employee's average monthly income from commissions.">
+                      </div>
+                    </div>
+                    <div class="form-group row text-center">
+                      <div class="col-sm-12">
+				<button class="btn btn_custom btn_inline" id="backbutton_emp_1">Back</button>
+                       <button class="btn btn_add_income btn_custom btn_inline" id="btn_add_income_<?php echo $app_pos; ?>">Add Income</button>
+                      </div>
+                    </div>
+                  </form>
+                 
+                </div>
+                <div id="rental_div"  class="tabForms"  style="display:none;">
+				
+				    <h2> Rentals </h2>
+                  <form class="form-horizontal"  method="POST" id="form_rent">
+                  	<input type="hidden" id="incomeid_rent" name="incomeid" value="">
+						  <div class="form-group row">
+                      <div class="col-sm-5 text-left">
+                        <label for="employment_owner_rent" class="col-form-label lbl_co_borrow"> <span class="red">*</span> Property Owner </label>
+                      </div>
+                      <div class="col-sm-7 text-left">
+                        <select class="form-control required62" id="employment_owner_rent" name="employment_owner">
+                          <option value="Borrower"> </option>
+                          <option value="Co-Borrower"></option>
+                           
+    
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-6">
+                        <label class="control-label"> Property Type<span class="red">*</span></label>
+                        <select class="form-control" id="borrower_rent_type" name="borrower_rent_type">
+                        	<option value=""></option>
+                          <option value="Single Family"> Single Family </option>
+                          <option value="Condominium">Condominium </option>
+                          <option value="Townhouse">Townhouse </option>
+                          <option value="Two to Four Unit Property">Two to Four Unit Property </option>
+                          <option value="Cooperative">Cooperative </option>
+                          <option value="Manufactured Home">Manufactured Home </option>
+                        </select>
+                      </div>
+                     <div class="col-sm-6">
+                        <label class="control-label">Property Value</label>
+                        <input type="text" class="form-control money"  placeholder="Property Value" id="borrower_rent_value" name="borrower_rent_value">
+                      </div>
+                    </div>
+                     <div class="form-group row">
+                <div class="col-sm-3">
+                  <label class="control-label">Property Address </label>
+                  <input type="text" class="form-control" name="borrower_prop_address_1" maxlength="70" id="borrower_prop_address_1" placeholder=""  title="The borrower's present street address.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Property City </label>
+                  <input class="form-control" name="borrower_prop_city_1" maxlength="50" id="borrower_prop_city_1" placeholder=""  title="The city in which the borrower's present address is located.">
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Property State </label>
+                  <select class="form-control" name="borrower_prop_state_1" id="borrower_prop_state_1" title="The state in which the borrower's present address is located.">
+               <option value="">Select State</option>
+              <option value="AL"> Alabama </option>
+  <option value="AK">Alaska</option>
+  <option value="AZ">Arizona</option>
+  <option value="AR">Arkansas</option>
+  <option value="CA">California</option>
+  <option value="CO">Colorado</option>
+  <option value="CT">Connecticut</option>
+  <option value="DE">Delaware</option>
+  <option value="DC">District Of Columbia</option>
+  <option value="FL">Florida</option>
+  <option value="GA">Georgia</option>
+  <option value="HI">Hawaii</option>
+  <option value="ID">Idaho</option>
+  <option value="IL">Illinois</option>
+  <option value="IN">Indiana</option>
+  <option value="IA">Iowa</option>
+  <option value="KS">Kansas</option>
+  <option value="KY">Kentucky</option>
+  <option value="LA">Louisiana</option>
+  <option value="ME">Maine</option>
+  <option value="MD">Maryland</option>
+  <option value="MA">Massachusetts</option>
+  <option value="MI">Michigan</option>
+  <option value="MN">Minnesota</option>
+  <option value="MS">Mississippi</option>
+  <option value="MO">Missouri</option>
+  <option value="MT">Montana</option>
+  <option value="NE">Nebraska</option>
+  <option value="NV">Nevada</option>
+  <option value="NH">New Hampshire</option>
+  <option value="NJ">New Jersey</option>
+  <option value="NM">New Mexico</option>
+  <option value="NY">New York</option>
+  <option value="NC">North Carolina</option>
+  <option value="ND">North Dakota</option>
+  <option value="OH">Ohio</option>
+  <option value="OK">Oklahoma</option>
+  <option value="OR">Oregon</option>
+  <option value="PA">Pennsylvania</option>
+  <option value="RI">Rhode Island</option>
+  <option value="SC">South Carolina</option>
+  <option value="SD">South Dakota</option>
+  <option value="TN">Tennessee</option>
+  <option value="TX">Texas</option>
+  <option value="UT">Utah</option>
+  <option value="VT">Vermont</option>
+  <option value="VA">Virginia</option>
+  <option value="WA">Washington</option>
+  <option value="WV">West Virginia</option>
+  <option value="WI">Wisconsin</option>
+  <option value="WY">Wyoming</option>
+              <!--  <?php foreach ($states as $state) : ?>
+               <option value="<?php echo $state->StateCode; ?>" <?php echo ($lead['borrower_prop_state_1'] == $state->StateCode ? 'selected="selected"' : ''); ?>><?php echo $state->StateName; ?></option>
+               <?php endforeach; ?> -->
+            </select>
+                </div>
+                <div class="col-sm-3">
+                  <label class="control-label">Property ZIP </label>
+                  <input type="text" class="form-control zip"  name="borrower_prop_zip_1" id="borrower_prop_zip_1" placeholder=""  title="The zip code in which the borrower's present address is located.">
+                </div>
+              </div>
+                    <div class="form-group row">
+                      
+                      <div class="col-sm-6">
+                        <label class="control-label"> Monthly Rent<span class="red">*</span></label>
+                        <input type="text" class="form-control money required91"  placeholder="" name="borrower_employer_base_income_1" id="borrower_employer_rent_income">
+                      </div>
+                      <div class="col-sm-6">
+                        <label class="control-label"> How many mortgages are on this property? <span class="red">*</span></label>
+                        <input type="text" class="form-control required91"  placeholder="" name="borrower_rent_mortgages" id="borrower_rent_mortgages">
+                      </div>
+                    </div>
+                    
+                      
+                    
+                    <div class="form-group row text-center">
+                      <div class="col-sm-12">
+					<button class="btn btn_custom btn_inline" id="backbutton_rent">Back</button>
+                        <button class="btn btn_add_rent btn_custom btn_inline" id="btn_add_rent">Add Income</button>
+                      </div>
+                    </div>
+                  </form>
+                
+                </div>
+                <div id="social_div"  class="tabForms" style="display:none;">
+				<h2> Social Security </h2>
+                  <form class="form-horizontal" method="POST" id="form_ssn_<?php echo $app_pos; ?>">
+                  	<input type="hidden" id="incomeid_ssn" name="incomeid" value="">
+						  <div class="form-group row">
+                      <div class="col-sm-5 text-left">
+                        <label for="employment_owner_ssn" class="col-form-label lbl_co_borrow"> <span class="red">*</span> Account Owner</label>
+                      </div>
+                      <div class="col-sm-7 text-left">
+                        <select class="form-control required62" id="employment_owner_ssn" name="employment_owner">
+                           <option value="Borrower">  </option>
+                          <option value="Co-Borrower"></option>
+                          
+    
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-offset-3 col-sm-6">
+                        <label class="control-label"> Annual Income<span class="red">*</span></label>
+                        <input type="text"class="form-control money" name="borrower_employer_base_income_1"  id="borrower-social-security" placeholder="" >
+                      </div>
+                     
+                    </div>
+                    <div class="form-group row text-center">
+                      <div class="col-sm-12">
+					<button class="btn btn_custom btn_inline" id="backbutton_ssn">Back</button>
+                       <button class="btn btn_add_ssn btn_custom btn_inline" id="btn_add_ssn_<?php echo $app_pos; ?>">Add Income</button>
+                      </div>
+                    </div>
+                  </form>
+               
+                </div>
+                <div id="pension_div"  class="tabForms"  style="display:none;">
+                 
+				 <h2> Pension </h2>
+                  <form class="form-horizontal" method="POST" id="form_pension">
+                  	<input type="hidden" id="incomeid_pension" name="incomeid" value="">
+						  <div class="form-group row">
+                      <div class="col-sm-5 text-left">
+                        <label for="employment_owner_pen" class="col-form-label lbl_co_borrow"> <span class="red">*</span> Account Owner </label>
+                      </div>
+                      <div class="col-sm-7 text-left">
+                        <select class="form-control required62" id="employment_owner_pen" name="employment_owner">
+                          <option value="Borrower"></option>
+                          <option value="Co-Borrower"></option>
+                           
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-4">
+                        <label class="control-label">When Did you Retire </label>
+                        <input type="text" class="form-control date" name="borrower_retire_date" id="borrower-retire-date_pension" placeholder="" />
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Employer Name<span class="red">*</span></label>
+                        <input type="text" class="form-control required93 borr_emp_field borr_employer_name_field" name="borrower_employer_name_1" maxlength="45"   id="borrower_employer_name_pension" placeholder="" value="" title="The name of the borrower's employer.">
+                      </div>
+                      <div class="col-sm-4">
+                        <label class="control-label"> Annual Income <span class="red">*</span></label>
+                        <input type="text" class="form-control money required93" name="borrower_employer_base_income_1" id="borrower-pension" placeholder="" />
+                      </div>
+                    </div>
+                    <div class="form-group row text-center">
+                      <div class="col-sm-12">
+					 <button class="btn btn_custom btn_inline" id="backbutton_pension">Back</button>
+                       <button class="btn btn_add_pension btn_custom btn_inline" id="btn_add_pension">Add Income</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div id="others_div"  class="tabForms"  style="display:none;">
+				<form class="form-horizontal" method="POST" id="form_other">
+                  	<input type="hidden" id="incomeid_other" name="incomeid" value="">
+						  <div class="form-group row">
+                      <div class="col-sm-5 text-left">
+                        <label for="employment_owner_other" class="col-form-label lbl_co_borrow"> <span class="red">*</span> Account Owner </label>
+                      </div>
+                      <div class="col-sm-7 text-left">
+                        <select class="form-control required62" id="employment_owner_other" name="employment_owner">
+                           <option value="Borrower"> </option>
+                          <option value="Co-Borrower"></option>
+    
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-md-offset-3 col-sm-6">
+                      	<div class="col-sm-6">
+                        <label class="control-label"> Income Type <span class="red">*</span></label>
+                        <select class="form-control required94" id="borrower_employment_type_other" name="borrower_employment_type">
+                          <option value="Alimony / Child Support">Alimony / Child Support</option>
+                          <option value="Annuity">Annuity </option>
+                          <option value="Deferred Compensation">Deferred Compensation </option>
+                          <option value="Interest / Dividends">Interest / Dividends </option>
+                          <option value="Other">Other </option>
+                        </select>
+                    </div>
+                         <div class="col-sm-6">
+                        <label class="control-label"> Annual Base Salary<span class="red">*</span> </label>
+                        <input type="text" class="form-control money required94"  name="borrower_employer_base_income_1" id="borrower_employer_base_income_other">
+                      </div>
+                      </div>
+                    </div>
+                    <div class="form-group row text-center">
+                      <div class="col-sm-12">
+					  <button class="btn btn_custom btn_inline" id="backbutton_other">Back</button>
+                       <button class="btn btn_add_other btn_custom btn_inline" id="btn_add_other">Add Income</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+    $(document).ready(function(){
+
+      $(".buttons").click(function () {
+      var divname= $(this).attr("data-datac");
+     $(".tabForms").hide();
+        $("#"+divname).show("slow").siblings().hide("slow");
+      $("#buttonsDiv").hide();
+       $("#backbutton").show();
+	   $("#nxtbut").hide();
+     // $(this).attr("data-datac").setAttribute("class", "item-box active_div");
+     // document.getElementById('button1').setAttribute("class", "item-box active_div");
+      
+      });
+    
+       $("#backbutton").click(function () {
+		   //alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+      });
+	     $("#backbutton_emp_1").click(function () {
+			 $("#employment_owner_emp").val('');
+				$("#borrower_employer_name_1").val('');
+				$("#borrower_current_employer").val('');
+
+				$("#borrower_employer_work_phone_1").val('');
+				$("#borrower_employer_address_1").val('');
+				$("#borrower_employer_city_1").val('');
+				$("#borrower_employer_state_1").val('');
+				$("#borrower_employer_zip_1").val('');
+				$("#borrower_employer_start_date_1").val('');
+				$("#borrower_employer_position_1").val('');
+				$("#borrower_employer_years_line_work_1").val('');
+				$("#borrower_employer_start_date_1").val('');
+				$("#borrower_income_type_1").val('');
+				
+				
+				$("#borrower_employer_base_income_1").val('');
+				$("#borrower_monthliy_overtime_amount").val('');
+				$("#borrower_employer_bonus_amount").val('');
+				$("#borrower_employer_commision_amount").val('');
+		  // alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+	   return false;
+      });
+   $("#backbutton_rent").click(function () {
+	    $('#borrower_rent_type').val('');
+						 $('#borrower_rent_value').val('');
+						  $('#borrower_employer_rent_income').val('');
+						   $('#borrower_rent_mortgages').val('');
+ $("#borrower_prop_address_1").val('');
+				$("#borrower_prop_city_1").val('');
+				$("#borrower_prop_state_1").val('');
+				$("#borrower_prop_zip_1").val('');
+		   //alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+	   return false;
+      });
+
+	    $("#backbutton_ssn").click(function () {
+			 $("#borrower-social-security").val('');
+		  // alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+	   return false;
+      });
+   $("#backbutton_pension").click(function () {
+	    $("#borrower_employer_name_pension").val('');	
+				$("#borrower-pension").val('');
+				$("#borrower-retire-date_pension").val('');
+		  // alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+	   return false;
+      });
+   $("#backbutton_other").click(function () {
+	   $("#borrower_employer_base_income_other").val('');
+		// alert("clicked");
+         $("#buttonsDiv").show();
+		  $("#nxtbut").show();
+        // $("#backbutton").hide();
+         $("#added_income").hide();
+       $(".tabForms").hide();
+	   return false;
+      });
+
+
+    });
+</script>
+
+</form>

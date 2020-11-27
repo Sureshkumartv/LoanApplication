@@ -1,0 +1,840 @@
+
+<div role="tabpanel" class="tab-pane active" id="preview"
+	th:fragment="form">
+	<script th:src="@{/assets/js/custom/longapp/preview.js}"></script>
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row text-center">
+				<div class="sec-inner consent_main">
+					<div class="center-box form_start">
+						<h2>Preview</h2>
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_start}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Basic Information</h4>
+											<a href="app_start" id="app_start" class="preview_btn"
+												aria-controls="home" role="tab" data-toggle="tab"> <i
+												class="fa fa-edit"></i>Edit Info
+											</a>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr>
+														<th>Legal First Name</th>
+														<td th:text="${app_start.borrowerFirstName}">Text ...</td>
+													</tr>
+
+													<tr>
+														<th>Middle Initial</th>
+														<td th:text="${app_start.borrowerMiddleName}">Text
+															...</td>
+
+													</tr>
+													<?php } ?>
+													<tr>
+														<th>Last Name</th>
+														<td th:text="${app_start.borrowerLastName}">Text ...</td>
+													</tr>
+
+													<tr>
+														<th>Suffix</th>
+														<td th:text="${app_start.borrowerSuffix}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Email Address</th>
+
+														<td th:text="${app_start.borrowerEmailid}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Cell Phone</th>
+
+														<td th:text="${app_start.borrowerCellphone}">Text ...</td>
+													</tr>
+
+													<tr>
+														<th>Do you have a co-borrower?</th>
+														<td
+															th:text="${app_start.coBorrowerStatus== null  ?'No' :'Yes'}">Text
+															...</td>
+													</tr>
+
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Co-Borrower First Name</th>
+
+														<td th:text="${app_start.coBorrowerFirstName}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Middle Name</th>
+														<td th:text="${app_start.coBorrowerMiddleName}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Co-Borrower Last Name</th>
+														<td th:text="${app_start.coBorrowerLastName}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Suffix</th>
+														<td th:text="${app_start.coBorrowerSuffix}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Email</th>
+														<td th:text="${app_start.coBorrowerEmailid}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Cell Phone</th>
+
+														<td th:text="${app_start.coBorrowerCellphone}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Are you currently an active military personel, a
+															veteran or surviving spouse ?</th>
+														<td
+															th:text="${app_start.activeMilitaryStatus== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Citizenship</th>
+														<td th:switch="${app_start.borrowerCitizenship}"><span
+															th:case="1">US Citizen</span> <span th:case="2">Permanent
+																Resident Alien</span> <span th:case="3">Non Permanent
+																Resident Alien</span></td>
+													</tr>
+													<tr>
+														<th>Marital Status</th>
+														<td th:switch="${app_start.borrowerMaritalStatus}"><span
+															th:case="1">Married</span> <span th:case="2">Separated</span>
+															<span th:case="3">Unmarried</span></td>
+													</tr>
+													<tr>
+														<th>Loan Applying for</th>
+														<td><span th:if="${app_start.applyingFor == 0}">Individual
+																Credit</span> <span th:unless="${app_start.applyingFor == 1}">Joint
+																Credit</span></td>
+
+
+													</tr>
+												</tbody>
+											</table>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_consents}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Consents</h4>
+											<a href="#app_consents" id="app_consents" class="preview_btn"
+												aria-controls="home" role="tab" data-toggle="tab"> <i
+												class="fa fa-edit"></i>Consents Info
+											</a>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr>
+														<th>Authorization to Obtain Credit Report :</th>
+														<td
+															th:text="${app_consents.borrowerCreditCheck== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Authorization to Obtain Credit Report
+															[Co-Borrower] : :</th>
+														<td
+															th:text="${app_consents.coBorrowerCreditCheck== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Authorization to be Contacted. [ Text Message's /
+															Phone Calls]</th>
+														<td
+															th:text="${app_consents.borrowerMessageCheck== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Authorization to be Contacted. [ advertising ]</th>
+														<td
+															th:text="${app_consents.borrowerAdvertisingCheck== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Authorization to be Contacted. [ Electronic Mail
+															Messages ]</th>
+														<td
+															th:text="${app_consents.borrowerOffersCheck== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_purpose}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Purpose</h4>
+											<a href="#app_purpose" id="app_purpose" class="preview_btn"
+												aria-controls="home" role="tab" data-toggle="tab"> <i
+												class="fa fa-edit"></i>Purpose Info
+											</a>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr>
+														<th>Mortgage purpose :</th>
+														<td
+															th:text="${app_purpose.mortgagePurpose == 0  ? 'Purchase' :'Refinance'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+
+														<th>Where are you in the home buying process? :</th>
+														<td th:text="${app_purpose.buyingProcess}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>City</th>
+														<td th:text="${app_purpose.propertyCity}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>State:</th>
+														<td th:text="${app_purpose.propertyState}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Zip :</th>
+														<td th:text="${app_purpose.propertyZip}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Purchase Price:</th>
+														<td th:text="${{app_purpose.propertyPurchaseprice}}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Contract Expiration Date:</th>
+														<td th:text="${{app_purpose.contractExpirationDate}}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Down Payment:</th>
+														<td th:text="${{app_purpose.downPayment}}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Gift Amount:</th>
+														<td th:text="${{app_purpose.giftAmount}}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Property Type:</th>
+														<td th:text="${app_purpose.purchasePropertyType}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Number of Units :</th>
+														<td th:text="${app_purpose.noOfUnitsPurchase}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+														<th>Have you owned a property in the last 3 years?</th>
+														<td th:text="${app_purpose.propertyOwned}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Property Type</th>
+														<td th:text="${app_purpose.propertyType}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Number of Units</th>
+														<td th:text="${app_purpose.noOfUnitsRefinance}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>How many Mortgages on Property ?</th>
+														<td th:text="${app_purpose.noOfMortgages}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Bank Name</th>
+														<td th:text="${app_purpose.bankName}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Balance of Mortgage</th>
+														<td th:text="${app_purpose.balanceMortgage}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Monthly Payment</th>
+														<td th:text="${app_purpose.monthlyPayment}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>2nd Bank Name</th>
+														<td th:text="${app_purpose.secondBankName}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Balance of Mortgage</th>
+														<td th:text="${app_purpose.seoncdBalanceMortgage}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Monthly Payment</th>
+														<td th:text="${app_purpose.secondMonthlyPayment}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Requested Loan Amount</th>
+														<td th:text="${app_purpose.requestLoanamount}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+														<th>Are you looking for money for any additional
+															reasons, or anything you'd like us to know ?</th>
+														<td th:text="${app_purpose.loanReason}">Text ...</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_personal}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Personal</h4>
+											<a href="#app_personal" id="app_personal" class="preview_btn"
+												aria-controls="home" role="tab" data-toggle="tab"> <i
+												class="fa fa-edit"></i>Personal Info
+											</a>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr>
+														<th>Borrower Name</th>
+														<td th:text="${app_personal.borrowerName}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Email Address</th>
+														<td th:text="${app_personal.emailId}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Date of Birth</th>
+														<td th:text="${app_personal.dateOfBirth}">Text ...</td>
+													</tr>
+													<tr>
+														<th>SSN</th>
+														<td th:text="${app_personal.ssn}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Home Phone</th>
+														<td th:text="${app_personal.homePhone}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Cell Phone</th>
+														<td th:text="${app_personal.cellPhone}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Work Phone</th>
+														<td th:text="${app_personal.workPhone}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Current Street</th>
+														<td th:text="${app_personal.currentStreet}">Text ...</td>
+													</tr>
+													<tr>
+														<th>City</th>
+														<td th:text="${app_personal.currentCity}">Text ...</td>
+													</tr>
+													<tr>
+														<th>State</th>
+														<td th:text="${app_personal.currentState}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Zip</th>
+														<td th:text="${app_personal.currentZip}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Years at this Address</th>
+														<td th:text="${app_personal.noOfYears}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Months</th>
+														<td th:text="${app_personal.noOfMonths}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Rent/Own</th>
+														<td th:text="${app_personal.houseType}">Text ...</td>
+													</tr>
+													<tr>
+														<th>House Rent</th>
+														<td th:text="${app_personal.houseRent}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Mailing address same as current address?</th>
+														<td th:text="${app_personal.currentMailingAddress}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>Street Address</th>
+														<td th:text="${app_personal.mailingStreet}">Text ...</td>
+													</tr>
+													<tr>
+														<th>City</th>
+														<td th:text="${app_personal.mailingCity}">Text ...</td>
+													</tr>
+													<tr>
+														<th>State</th>
+														<td th:text="${app_personal.mailingState}">Text ...</td>
+													</tr>
+													<tr>
+														<th>Zip</th>
+														<td th:text="${app_personal.mailingZip}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Borrower Name</th>
+														<td th:text="${app_personal.coBorrowerName}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Email Address</th>
+														<td th:text="${app_personal.coEmailId}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Date of Birth</th>
+														<td th:text="${app_personal.coDateOfBirth}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>SSN</th>
+														<td th:text="${app_personal.coSsn}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Home Phone</th>
+														<td th:text="${app_personal.coHomePhone}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Cell Phone</th>
+														<td th:text="${app_personal.coCellPhone}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Work Phone</th>
+														<td th:text="${app_personal.coWorkPhone}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Current Street</th>
+														<td th:text="${app_personal.coCurrentStreet}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>City</th>
+														<td th:text="${app_personal.coCurrentCity}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>State</th>
+														<td th:text="${app_personal.coCurrentState}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Zip</th>
+														<td th:text="${app_personal.coCurrentZip}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Years at this Address</th>
+														<td th:text="${app_personal.coNoOfYears}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Months</th>
+														<td th:text="${app_personal.coNoOfMonths}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Rent/Own</th>
+														<td th:text="${app_personal.coHouseType}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>House Rent</th>
+														<td th:text="${app_personal.coHouseRent}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Mailing address same as current address?</th>
+														<td th:text="${app_personal.coCurrentMailingAddress}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Street Address</th>
+														<td th:text="${app_personal.coMailingStreet}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>City</th>
+														<td th:text="${app_personal.coMailingCity}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>State</th>
+														<td th:text="${app_personal.coMailingState}">Text ...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>Zip</th>
+														<td th:text="${app_personal.coMailingZip}">Text ...</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_assets}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Assets</h4>
+											<a href="#app_assets" id="app_assets" class="preview_btn"
+												aria-controls="home" role="tab" data-toggle="tab"> <i
+												class="fa fa-edit"></i>Assets Info
+											</a>
+										</div>
+									</div>
+
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+
+												<tbody>
+													
+													<tr>
+														<th>
+															Account Owner
+														</th>
+														<td
+															th:text="${app_assets.accountOwner}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Checking
+														</th>
+														<td
+															th:text="${app_assets.accountChecking}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Savings
+														</th>
+														<td
+															th:text="${app_assets.savings}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Other Accounts
+														</th>
+														<td
+															th:text="${app_assets.otherAccounts}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Account Balance
+														</th>
+														<td
+															th:text="${app_assets.accountBalance}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Total Assets
+														</th>
+														<td
+															th:text="${app_assets.totalAssets}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															How much money are you putting down
+														</th>
+														<td
+															th:text="${app_assets.downPayment}">Text
+															...</td>
+													</tr>
+														<tr>
+														<th>
+															What portion of your down payment,if any , will be a gift
+														</th>
+														<td
+															th:text="${app_assets.portionDownpayment}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>
+															Other Properties
+														</th>
+														<td
+															th:text="${app_assets.portionDownpayment}">Text
+															...</td>
+													</tr>
+													
+												</tbody>
+
+											</table>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</form>
+						<form method="POST" class="form-horizontal" id="form_app_preview"
+							th:object="${app_declarations}" th:modelAttribute="loan_app">
+							<div class="form-group row">
+								<div class="panel panel-default thumbnail">
+									<div class="panel-heading preview_button">
+										<div class="row">
+											<h4>Declarations</h4>
+											<a href="#app_declaration" id="app_declaration"
+												class="preview_btn" aria-controls="home" role="tab"
+												data-toggle="tab"> <i class="fa fa-edit"></i>Declaration
+											</a>
+										</div>
+									</div>
+									<div class="panel-body">
+										<div class="table-responsive preview_form">
+											<table class="table table-striped table-bordered">
+												<tbody>
+													<tr>
+														<th>A.Are there any outstanding judgements against
+															you?</th>
+														<td
+															th:text="${app_declarations.outstandingJudgments== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>B. Are you currently delinquent or in default on
+															a Federal debt?</th>
+														<td
+															th:text="${app_declarations.defaultFederaldebt== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>C. Are you a party to a lawsuit in which you
+															potentially have any personal financial liability?</th>
+														<td
+															th:text="${app_declarations.personalFinancialLiability== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>D. Have you had property foreclosed upon in the
+															last 7 years?</th>
+														<td
+															th:text="${app_declarations.propertyForeclosed== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>E. Have you declared bankruptcy within the past 7
+															years?</th>
+														<td
+															th:text="${app_declarations.isBankruptcy== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr>
+														<th>If YES, identify the type of bankruptcy</th>
+														<td
+															th:text="${app_declarations.outstandingJudgments== null  ?'Off' :'On'}">Text
+															...</td>
+														<td></td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>A.Are there any outstanding judgements against
+															you?</th>
+														<td
+															th:text="${app_declarations.outstandingJudgments== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>B. Are you currently delinquent or in default on
+															a Federal debt?</th>
+														<td
+															th:text="${app_declarations.defaultFederaldebt== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>C. Are you a party to a lawsuit in which you
+															potentially have any personal financial liability?</th>
+														<td
+															th:text="${app_declarations.personalFinancialLiability== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>D. Have you had property foreclosed upon in the
+															last 7 years?</th>
+														<td
+															th:text="${app_declarations.propertyForeclosed== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>E. Have you declared bankruptcy within the past 7
+															years?</th>
+														<td
+															th:text="${app_declarations.isBankruptcy== null  ?'Off' :'On'}">Text
+															...</td>
+													</tr>
+													<tr
+														th:style="${app_start.coBorrowerStatus == 'Yes' ?'' :'display:none;' }">
+														<th>If YES, identify the type of bankruptcy</th>
+														<td
+															th:text="${app_declarations.outstandingJudgments== null  ?'Off' :'On'}">Text
+															...</td>
+														<td></td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form method="POST" class="form-horizontal" id="form_app_preview"
+								th:object="${app_income}" th:modelAttribute="loan_app">
+								<div class="form-group row">
+									<div class="panel panel-default thumbnail">
+										<div class="panel-heading preview_button">
+											<div class="row">
+												<h4>Income</h4>
+												<a href="#app_employement" id="app_employement"
+													class="preview_btn" aria-controls="home" role="tab"
+													data-toggle="tab"> <i class="fa fa-edit"></i>Income
+													Info
+												</a>
+											</div>
+										</div>
+
+										<div class="panel-body">
+											<div class="table-responsive preview_form">
+
+
+												<table class="table table-striped table-bordered">
+
+													<tbody>
+														<?php $employ = getFormValue($lead,'employ'); for($i=0;$i<count($employ);$i++){?>
+														<tr>
+															<th>
+																<?php echo getFormValue($lead['employ'][$i],'borrower_employment_type');?>
+															</th>
+															<td>
+																<?php echo getFormValue($lead['employ'][$i],'borrower_employer_base_income_1');?>
+															</td>
+														</tr>
+														<?php } ?>
+													</tbody>
+
+												</table>
+
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<?php } ?>
+								<div style="text-align: left; padding: 10px;">The terms of
+									any prequalification that you may receive from Reliance First
+									Capital will be based upon a preliminary review of your credit
+									history and current income and therefore should not be
+									construed as a commitment to lend. Changes to your
+									creditworthiness or financial condition may affect your
+									eligibility for the loan terms listed in any such
+									prequalification.If you choose to apply, your application for a
+									residential mortgage loan is subject to final approval which
+									requires a satisfactory appraisal, verification of your
+									employment, income, assets, creditworthiness and any other
+									information we may require to make a final underwriting
+									decision.</div>
+								<button class="btn btn_next btn_custom submitapp"
+									id="btn_next_<?php echo $app_pos; ?>">Submit
+									Application</button>
+								<br />
+							</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

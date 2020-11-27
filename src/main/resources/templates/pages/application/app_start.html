@@ -1,0 +1,257 @@
+
+<div role="tabpanel" class="tab-pane active" id="application"
+	th:fragment="form">
+	<script th:src="@{/assets/js/custom/longapp/start.js}"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row">
+				<div class="sec-inner">
+					<div class="center-box form_start">
+						<h2>Start New Application</h2>
+						<form method="POST" class="form-horizontal" id="form_app_start"
+							th:object="${app_start}" th:modelAttribute="loan_app">
+
+							<div class="ajaxMessage"></div>
+							<div class="form-group row">
+								<div class="col-sm-4 co-xs-12 ">
+									<label class="control-label">Legal First Name <span
+										class="red">*</span></label> <input type="text"
+										class="form-control required" th:field="*{borrowerFirstName}"
+										maxlength="50" placeholder="" id="borrowerFirstName"
+										title="The borrower's first name." />
+								</div>
+								<div class="col-sm-4 co-xs-12 ">
+									<label class="control-label">Middle Name</label> <input
+										type="text" class="form-control"
+										th:field="*{borrowerMiddleName}" maxlength="20" placeholder=""
+										id="borrowerMiddleName" title="The borrower's middle name." />
+								</div>
+								<div class="col-sm-4 co-xs-12">
+									<label class="control-label">Last Name <span
+										class="red">*</span></label> <input type="text"
+										class="form-control required" th:field="*{borrowerLastName}"
+										maxlength="50" id="borrowerLastName" placeholder=""
+										title="The borrower's last name." />
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-4 co-xs-12">
+									<label class="control-label">Suffix</label> <input type="text"
+										class="form-control " th:field="*{borrowerSuffix}"
+										maxlength="10" placeholder="" id="borrowerSuffix"
+										title="The borrower's suffix, for example: Jr, Sr, 3rd." />
+								</div>
+								<div class="col-sm-4 co-xs-12">
+									<label class="control-label">Email<span class="red">*</span></label>
+									<input type="email" class="form-control required"
+										th:field="*{borrowerEmailid}" maxlength="75"
+										id="borrowerEmailid" placeholder=""
+										title="The borrower's email address." />
+								</div>
+								<div class="col-sm-4 co-xs-12">
+									<label class="control-label">Phone Number<span
+										class="red">*</span></label> <input type="text"
+										class="form-control phone required"
+										th:field="*{borrowerCellphone}" name="" maxlength="75"
+										id="borrowerCellphone" placeholder=""
+										title="The borrower's Phone Number." />
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-5 text-left">
+									<label class="col-form-label lbl_co_borrow"> Do you
+										have a co-borrower? </label>
+								</div>
+								<div class="col-sm-4">
+									<div class="toggle_text">
+										<span> NO </span> <input type="checkbox"
+											th:field="*{coBorrowerStatus}" id="coBorrowerStatus"
+											class="cbx hidden" value="Yes"> <label
+											for="coBorrowerStatus" class="lbl"></label> <span> YES
+										</span>
+									</div>
+								</div>
+							</div>
+							
+							<div class="borrower-married form-group row">
+									<div class="col-sm-5 text-left">
+										<label class="col-form-label lbl_co_borrow"> Are you
+											currently an active military personel, a veteran or surviving
+											spouse ? </label>
+									</div>
+									<div class="col-sm-4">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{activeMilitaryStatus}" id="activeMilitaryStatus"
+												class="cbx hidden" value="Yes"> <label
+												for="activeMilitaryStatus" class="lbl"></label> <span>
+												YES </span>
+										</div>
+
+									</div>
+								</div>
+
+							<div class="coborrw"
+								th:style="${app_start.coBorrowerStatus == 'Yes' ? '' :'display:none'}">
+
+								
+								<div class="borrower-married form-group row">
+									<div class="col-sm-4">
+										<label class="control-label">Co-Borrower First Name<span
+											class="red">*</span></label> <input type="text"
+											class="form-control co_required"
+											th:field="*{coBorrowerFirstName}" name="coBorrowerFirstName"
+											maxlength="50" id="coBorrowerFirstName" placeholder=""
+											title="The co-borrower's first name. A co-borrower (along with the borrower) accepts responsibility for repaying the loan." />
+									</div>
+									<div class="col-sm-4">
+										<label class="control-label">Middle Name</label> <input
+											type="text" class="form-control"
+											th:field="*{coBorrowerMiddleName}"
+											name="coBorrowerMiddleName" maxlength="20" placeholder=""
+											id="coBorrowerMiddleName"
+											title="The co-borrower's middle name." />
+									</div>
+									<div class="col-sm-4">
+										<label class="control-label">Co-Borrower Last Name<span
+											class="red">*</span></label> <input type="text"
+											class="form-control co_required"
+											th:field="*{coBorrowerLastName}" maxlength="50"
+											id="coBorrowerLastName" placeholder=""
+											title="The co-borrower's last name." />
+									</div>
+								</div>
+								<div class="borrower-married form-group row">
+									<div class="col-sm-4">
+										<label class="control-label">Suffix</label> <input type="text"
+											class="form-control" th:field="*{coBorrowerSuffix}"
+											maxlength="10" placeholder="" id="coBorrowerSuffix"
+											title="The co-borrower's suffix, for example: Jr, Sr, 3rd." />
+									</div>
+									<div class="col-sm-4">
+										<label class="control-label">Email <span class="red">*</span></label>
+										<input type="text" class="form-control co_required "
+											th:field="*{coBorrowerEmailid}" placeholder=""
+											id="coBorrowerEmailid"
+											title="The co-borrower's email, for example: coborrower@domain.com." />
+									</div>
+									<div class="col-sm-4 co-xs-12">
+										<label class="control-label">Phone Number<span
+											class="red">*</span></label> <input type="text"
+											class="form-control phone co_required"
+											th:field="*{coBorrowerCellphone}" maxlength="75"
+											id="coBorrowerCellphone" placeholder=""
+											title="The co-borrower's Phone Number." />
+									</div>
+								</div>
+
+								
+
+							</div>
+							<div class="borrower-married form-group row">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Citizenship <!-- <span class="red">*</span>-->
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrowerCitizenship_Citizen"
+													th:field="*{borrowerCitizenship}" value="0" /> <label
+													for="borrowerCitizenship_Citizen"> US Citizen </label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrowerCitizenship_Permanent"
+													th:field="*{borrowerCitizenship}" value="1" /> <label
+													for="borrowerCitizenship_Permanent">Permanent
+													Resident Alien</label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrowerCitizenship_NonPRA"
+													th:field="*{borrowerCitizenship}" value="2" /> <label
+													for="borrowerCitizenship_NonPRA">Non Permanent
+													Resident Alien</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="borrower-married form-group row">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Marital Status <!-- <span class="red">*</span> -->
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrower_Marital_status_married"
+													th:field="*{borrowerMaritalStatus}" value="0" /> <label
+													for="borrower_Marital_status_married"> Married </label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrower_Marital_status_Separated"
+													th:field="*{borrowerMaritalStatus}" value="1" /> <label
+													for="borrower_Marital_status_Separated">Separated</label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="borrower_Marital_status_Unmarried"
+													th:field="*{borrowerMaritalStatus}" value="2" /> <label
+													for="borrower_Marital_status_Unmarried">Unmarried</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div class="borrower-married form-group row">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Loan Applying for <!-- <span class="red">*</span> -->
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													th:field="*{applyingFor}" id="loanapply_Individual"
+													value="0" /> <label for="loanapply_Individual">
+													Individual Credit </label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity" id="loanapply_Joint"
+													th:field="*{applyingFor}" value="1" /> <label
+													for="loanapply_Joint">Joint Credit</label>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							<!-- <div class="g-recaptcha col-sm-5"
+								th:attr="data-sitekey=${@captchaSettings.getSite()}"></div>
+							<span id="captchaError" class="alert alert-danger col-sm-4"
+								style="display: none"></span> -->
+							<div class="form-group row text-center">
+								<button type="submit" class="btn_custom btn_next btn_custom"
+									id="btn_next_app_start">Submit</button>
+							</div>
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

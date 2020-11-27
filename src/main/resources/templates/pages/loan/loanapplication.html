@@ -1,0 +1,93 @@
+
+<html layout:decorate="~{layout/main_layout}">
+<th:block layout:fragment="headscripts">
+
+	<script>
+		var lead_id = "[[${app_flag!=null ? app_flag.recordId :''}]]";
+		var borrower_full_name = "[[${app_start == null ? '': app_start.borrowerFullName}]]";
+		var borrower_emailid = "[[${app_start == null ? '': app_start.borrowerEmailid}]]";
+		var borrower_phone = "[[${app_start == null ? '': app_start.borrowerCellphone}]]";
+		var co_borrower_full_name = "[[${app_start == null ? '' : app_start.coBorrowerFullName}]]";
+		var app_tab_pos = "[[${app_flag == null ? '' : app_flag.applicationPosition}]]";
+		var cur_tab_pos = "[[${ app_flag == null ?''  : app_flag.applicationPosition }]]";
+		var co_borrower_status = "[[${app_start == null ? '' : app_start.coBorrowerStatus}]]";
+		var base_url = "[[@{/}]]";
+		console.log("lead_id ---:" + lead_id);
+		console.log("borrower full name --:" + borrower_full_name);
+		console.log("app_tab_pos ---:" + app_tab_pos);
+		console.log("cur_tab_pos ---:" + cur_tab_pos);
+	</script>
+	<script th:src="@{/assets/js/autoNumeric.js}"></script>
+	<script th:src="@{/assets/js/custom/longapp/application.js}"></script>
+	<style type="text/css">
+#footer {
+	position: static;
+}
+</style>
+</th:block>
+<th:block layout:fragment="page_content"
+	th:with="app_pos =${app_flag == null ? 'app_start' :app_flag.applicationPosition} ">
+	<div th:replace="pages/application/mainmenu :: menu">...</div>
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="app_loading"></div>
+		<div role="tabpanel" class="tab-pane"
+			th:classappend=" ${app_pos == 'app_start' ? 'active' : ''}"
+			id="app_start">
+			<div th:if="${app_pos == 'app_start'}">
+				<div th:replace="pages/application/app_start :: form">...</div>
+			</div>
+
+		</div>
+		<div role="tabpanel" class="tab-pane " id="app_consents"
+			th:classappend=" ${app_pos == 'app_consents' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_consents'}">
+				<div th:replace="pages/application/app_consents :: form">...</div>
+			</div>
+
+		</div>
+		
+		<div role="tabpanel" class="tab-pane " id="app_purpose"
+			th:classappend=" ${app_pos == 'app_purpose' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_purpose'}">
+				<div th:replace="pages/application/app_purpose :: form">...</div>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="app_personal"
+			th:classappend=" ${app_pos == 'app_personal' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_personal'}">
+				<div th:replace="pages/application/app_personal :: form">...</div>
+			</div>
+
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="app_income"
+			th:classappend=" ${app_pos == 'app_income' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_income'}">
+				<div th:replace="pages/application/app_income :: form">...</div>
+			</div>
+
+		</div>
+		<div role="tabpanel" class="tab-pane " id="app_declaration"
+			th:classappend=" ${app_pos == 'app_declaration' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_declaration'}">
+				<div th:replace="pages/application/app_declaration :: form">...</div>
+			</div>
+
+		</div>
+		<div role="tabpanel" class="tab-pane " id="app_assets"
+			th:classappend=" ${app_pos == 'app_assets' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_assets'}">
+				<div th:replace="pages/application/app_assets :: form">...</div>
+			</div>
+
+		</div>
+		<div role="tabpanel" class="tab-pane " id="app_preview"
+			th:classappend=" ${app_pos == 'app_preview' ? 'active' : ''}">
+			<div th:if="${app_pos == 'app_preview'}">
+				<div th:replace="pages/application/app_preview :: form">...</div>
+			</div>
+
+		</div>
+</th:block>
+</html>
+

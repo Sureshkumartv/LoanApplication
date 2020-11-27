@@ -1,0 +1,181 @@
+<div id="rental_div" class="tabForms" style="display: none;"
+	th:fragment="tabForms">
+
+	<h2>Rentals</h2>
+	<form class="form-horizontal" method="POST" id="form_rental"
+		th:object="${app_rental}" th:modelAttribute="loan_app">
+		  <input type="hidden" id="incomeid_rent" th:field="*{incomeId}"  value="">  
+		<div class="form-group row">
+			<div class="col-sm-5 text-left">
+				<label for="employment_owner_rent"
+					class="col-form-label lbl_co_borrow"> <span class="red">*</span>
+					Property Owner
+				</label>
+			</div>
+			<div class="col-sm-7 text-left">
+				<select class="form-control required62" id="employment_owner_emp"
+					th:field="*{rentalPropertyOwner}">
+					<option value="borr">[[${app_start == null ? '':
+						app_start.borrowerFullName}]]</option>
+					<option th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}" value="coborr">[[${app_start == null ? '':
+						app_start.coBorrowerFullName}]]</option>
+
+
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+
+			<div class="col-md-2 col-sm-12">
+				<label class="control-label">Property Type <!-- <span class="red">*</span> -->
+				</label>
+			</div>
+			<div class="col-md-10 col-sm-12">
+				<div class="custom_select">
+					<div class="col-md-4 col-sm-12">
+						<input type="radio" class="ethnicity" id="propertyType_primary"
+							th:field="*{rentalPropertyType}" value="1" /> <label
+							for="propertyType_primary"> Primary </label>
+					</div>
+					<div class="col-md-4 col-sm-12">
+						<input type="radio" class="ethnicity" id="propertyType_secondhome"
+							th:field="*{rentalPropertyType}" value="2" /> <label
+							for="propertyType_secondhome">Second Home</label>
+					</div>
+					<div class="col-md-4 col-sm-12">
+						<input type="radio" class="ethnicity" id="propertyType_investment"
+							th:field="*{rentalPropertyType}" value="3" /> <label
+							for="propertyType_investment">Investment</label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-3">
+				<label class="control-label">Property Address <span
+					class="red">*</span></label> <input type="text"
+					class="form-control required91" th:field="*{rentalPropertyAddress}"
+					maxlength="70" id="borrower_prop_address_1" placeholder=""
+					title="The borrower's present street address.">
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Property City <span class="red">*</span></label>
+				<input class="form-control required91" th:field="*{rentalPropertyCity}"
+					maxlength="50" id="borrower_prop_city_1" placeholder=""
+					title="The city in which the borrower's present address is located.">
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Property State<span class="red">*</span>
+				</label> <select class="form-control required91" th:value="*{rentalPropertyState}"
+					name="currentState" id="currentState" required="required">
+
+					<option th:each="state : ${states}"
+						th:value="${state.propertyCode}" th:text="${state.propertyState}"></option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<label class="control-label">Property ZIP <span class="red">*</span></label>
+				<input type="text" class="form-control zip required91"
+					th:field="*{rentalPropertyZip}" id="borrower_prop_zip_1" placeholder=""
+					title="The zip code in which the borrower's present address is located.">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-6">
+				<label class="control-label"> Property Value <span
+					class="red">*</span>
+				</label> <input type="text" class="form-control money  required91" placeholder=""
+					th:field="*{rentalPropertyValue}" id="propertyValue">
+			</div>
+
+			<div class="col-sm-6">
+				<label class="control-label"> Monthly Rent<span class="red">*</span></label>
+				<input type="text" class="form-control money required91"
+					placeholder="" th:field="*{rentalMonthlyRent}"
+					id="borrower_employer_rent_income">
+			</div>
+
+		</div>
+
+		<div class="form-group row">
+			<div class="col-md-4 col-sm-12">
+				<label class="control-label">How many Mortgages on Property
+					? <!-- <span class="red">*</span> -->
+				</label>
+			</div>
+			<div class="col-md-8 col-sm-12">
+
+				<div class=" row custom_select">
+					<div class="col-md-6 col-sm-12">
+						<input type="radio" class="rentalNoOfMortgages" id="rentalNoOfMortgages_no"
+							th:field="*{rentalNoOfMortgages}" value="0" /> <label
+							for="rentalNoOfMortgages_no"> Does not apply </label>
+					</div>
+					<div class="col-md-3 col-sm-12 ">
+						<input type="radio" class="rentalNoOfMortgages" id="rentalNoOfMortgages_1"
+							th:field="*{rentalNoOfMortgages}" value="1" /> <label
+							for="rentalNoOfMortgages_1"> 1 </label>
+					</div>
+					<div class="col-md-3 col-sm-12">
+						<input type="radio" class="rentalNoOfMortgages" id="rentalNoOfMortgages_2"
+							th:field="*{rentalNoOfMortgages}" value="2" /> <label
+							for="rentalNoOfMortgages_2"> 2 </label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row rentalNoOfMortgages_bank rental_bank1"
+			th:style="${rentalNoOfMortgages > 0 ?'' :'display:none;' }">
+
+			<div class="col-sm-3 co-xs-12 ">
+				<label class="control-label">Bank Name <span class="red">*</span></label>
+				<input type="text" class="form-control required91"
+					th:field="*{rentalBankName}" maxlength="50" placeholder="" id="rentalBankName"
+					title="" />
+			</div>
+			<div class="col-sm-3 co-xs-12 ">
+				<label class="control-label">Balance of Mortgage</label> <input
+					type="text" class="form-control" th:field="*{rentalBalanceMortgage}"
+					maxlength="20" placeholder="" id="rentalBalanceMortgage" title="" />
+			</div>
+			<div class="col-sm-3 co-xs-12">
+				<label class="control-label">Monthly Payment <span
+					class="red">*</span></label> <input type="text"
+					class="form-control money  required91" th:field="*{rentalMonthlyPayment}"
+					maxlength="50" id="rentalMonthlyPayment" placeholder="" title="" />
+			</div>
+		</div>
+		<div class="form-group row rentalNoOfMortgages_bank rental_bank2"
+			th:style="${rentalNoOfMortgages > 1 ?'' :'display:none;' }">
+			<div class="col-sm-3 co-xs-12 ">
+				<label class="control-label">2nd Bank Name <span class="red">*</span></label>
+				<input type="text" class="form-control required91"
+					th:field="*{rentalSecondBankName}" maxlength="50" placeholder=""
+					id="rentalSecondBankName" title="" />
+			</div>
+			<div class="col-sm-3 co-xs-12 ">
+				<label class="control-label">Balance of Mortgage</label> <input
+					type="text" class="form-control"
+					th:field="*{rentalSecondBalanceMortgage}" maxlength="20" placeholder=""
+					id="rentalSecondBalanceMortgage" title="" />
+			</div>
+			<div class="col-sm-3 co-xs-12">
+				<label class="control-label">Monthly Payment <span
+					class="red">*</span></label> <input type="text"
+					class="form-control money  required91" th:field="*{rentalSecondMonthlyPayment}"
+					maxlength="50" id="rentalSecondMonthlyPayment" placeholder="" title="" />
+			</div>
+
+		</div>
+
+		<div class="form-group row text-center">
+			<div class="col-sm-12">
+				<button class="btn btn_custom btn_inline" id="backbutton_rental">Back</button>
+				<button class="btn btn_add_rent btn_custom btn_inline"
+					id="btn_add_income_app_rental">Add Income</button>
+			</div>
+		</div>
+	</form>
+
+</div>

@@ -1,0 +1,309 @@
+<div role="tabpanel" class="tab-pane active" th:fragment="form">
+	<script th:src="@{/assets/js/custom/longapp/declaration.js}"></script>
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row text-center">
+				<div class="sec-inner consent_main">
+					<div class="center-box form_start">
+						<h2>Declarations</h2>
+						<form class="form-horizontal" method="POST"
+							id="form_app_declarations" th:object="${app_declarations}"
+							th:modelAttribute="loan_app">
+							<div class="col-md-6 col-sm-12">
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">A.Are there any outstanding
+												judgements against you?</p>
+										</label>
+									</div>
+
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{outstandingJudgments}" id="outstandingJudgments"
+												class="cbx hidden required" value="Yes"> <label
+												for="outstandingJudgments" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">B. Are you currently delinquent or
+												in default on a Federal debt?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{defaultFederaldebt}" id="defaultFederaldebt"
+												class="cbx hidden required" value="Yes"> <label
+												for="defaultFederaldebt" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">C. Are you a party to a lawsuit in
+												which you potentially have any personal financial liability?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{personalFinancialLiability}"
+												id="personalFinancialLiability" class="cbx hidden required"
+												value="Yes"> <label for="personalFinancialLiability"
+												class="lbl"></label> <span> YES </span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">D. Have you had property
+												foreclosed upon in the last 7 years?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{propertyForeclosed}" id="propertyForeclosed"
+												class="cbx hidden required" value="Yes"> <label
+												for="propertyForeclosed" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">E. Have you declared bankruptcy
+												within the past 7 years?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{isBankruptcy}" id="isBankruptcy"
+												class="cbx hidden required" value="Yes"> <label
+												for="isBankruptcy" class="lbl"></label> <span> YES </span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row declarationborr" th:style="${app_declarations.isBankruptcy == 'Yes' ? '' :'display:none'}">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<!-- <span class="red left_sp"> * </span> -->
+											<p class="left_sp_txt">If YES, identify the type of
+												bankruptcy</p>
+										</label>
+									</div>
+									<div class="col-md-12 col-sm-12" >
+
+										<div class="col-md-6 col-sm-12">
+											<div class="custom_select">
+												<input type="radio" class="" id="bankruptcyType_0"
+													th:field="*{bankruptcyType}" value="0" /> <label
+													for="bankruptcyType_0"> Chapter 7 </label>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="custom_select">
+												<input type="radio" class="" id="bankruptcyType_1"
+													th:field="*{bankruptcyType}" value="1" /> <label
+													for="bankruptcyType_1">Chapter 11</label>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="custom_select">
+												<input type="radio" class="" id="bankruptcyType_2"
+													th:field="*{bankruptcyType}" value="2" /> <label
+													for="bankruptcyType_2"> Chapter 12 </label>
+											</div>
+										</div>
+										<div class="col-md-6 col-sm-12">
+											<div class="custom_select">
+												<input type="radio" class="" id="bankruptcyType_3"
+													th:field="*{bankruptcyType}" value="3" /> <label
+													for="bankruptcyType_3"> Chapter 13 </label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<div class="col-md-6 col-sm-12 coborrw" >
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">A.Are there any outstanding
+												judgements against you?</p>
+										</label>
+									</div>
+
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coOutstandingJudgments}"
+												id="coOutstandingJudgments" class="cbx hidden required"
+												value="Yes"> <label for="coOutstandingJudgments"
+												class="lbl"></label> <span> YES </span>
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">B. Are you currently delinquent or
+												in default on a Federal debt?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coDefaultFederaldebt}" id="coDefaultFederaldebt"
+												class="cbx hidden required" value="Yes"> <label
+												for="coDefaultFederaldebt" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">C. Are you a party to a lawsuit in
+												which you potentially have any personal financial liability?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coPersonalFinancialLiability}"
+												id="coPersonalFinancialLiability"
+												class="cbx hidden required" value="Yes"> <label
+												for="coPersonalFinancialLiability" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">D. Have you had property
+												foreclosed upon in the last 7 years?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coPropertyForeclosed}" id="coPropertyForeclosed"
+												class="cbx hidden required" value="Yes"> <label
+												for="coPropertyForeclosed" class="lbl"></label> <span>
+												YES </span>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<span class="red left_sp"> * </span>
+											<p class="left_sp_txt">E. Have you declared bankruptcy
+												within the past 7 years?</p>
+										</label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<div class="toggle_text">
+											<span> NO </span> <input type="checkbox"
+												th:field="*{coIsBankruptcy}" id="coIsBankruptcy"
+												class="cbx hidden required" value="Yes"> <label
+												for="coIsBankruptcy" class="lbl"></label> <span> YES
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row declarationcoborr" th:style="${app_declarations.coIsBankruptcy == 'Yes' ? '' :'display:none'}">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											<!-- <span class="red left_sp"> * </span> -->
+											<p class="left_sp_txt">If YES, identify the type of
+												bankruptcy</p>
+										</label>
+									</div>
+									<div class="col-md-12 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-6 col-sm-12" >
+												<input type="radio"  id="coBankruptcyType_0"
+													th:field="*{coBankruptcyType}" value="0" /> <label
+													for="coBankruptcyType_0"> Chapter 7 </label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="custom_select" id="coBankruptcyType_1"
+													th:field="*{coBankruptcyType}" value="1" /> <label
+													for="coBankruptcyType_1">Chapter 11</label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="custom_select" id="coBankruptcyType_2"
+													th:field="*{coBankruptcyType}" value="2" /> <label
+													for="coBankruptcyType_2"> Chapter 12 </label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="custom_select" id="coBankruptcyType_3"
+													th:field="*{coBankruptcyType}" value="3" /> <label
+													for="coBankruptcyType_3"> Chapter 13 </label>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+					</div>
+
+					<div class="form-group row text-center">
+						<div class="col-sm-7 col-sm-offset-3 ">
+							<button class="btn btn_previous btn_custom btn_inline"
+								id="btn_prev_app_declaration">
+								<i class="fa fa-chevron-left"></i> Previous
+							</button>
+							<button class="btn btn_next btn_custom btn_inline"
+								id="btn_next_app_declaration">
+								Next <i class="fa fa-chevron-right"></i>
+							</button>
+						</div>
+					</div>
+					
+					</form>
+				</div>
+
+				<br />
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>

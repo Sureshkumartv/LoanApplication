@@ -1,0 +1,406 @@
+
+<div role="tabpanel" class="tab-pane active" id="assit"
+	th:fragment="form">
+
+	<div class="custom-tab-content">
+		<div class="container">
+			<div class="row">
+				<div class="sec-inner">
+					<div class="center-box form_start">
+						<h2>Purpose</h2>
+						<form method="POST" class="form-horizontal" id="form_app_purpose"
+							th:object="${app_purpose}" th:modelAttribute="loan_app">
+
+							<div class="ajaxMessage"></div>
+							<div class="form-group row">
+								<div class="col-sm-5 text-left">
+									<label for="co-bar" class="col-form-label lbl_co_borrow">
+										<span class="red">*</span> Mortgage purpose
+									</label>
+								</div>
+								<div class="col-sm-7 text-left">
+									<select class="form-control loantype required"
+										id="mortgagePurpose" th:field="*{mortgagePurpose}">
+										<option value="1">Refinance</option>
+										<option value="0">Purchase</option>
+
+									</select>
+								</div>
+							</div>
+							<div id="refinancepanel"
+								th:style="${app_purpose.mortgagePurpose == 1 ?'' :'display:none;' }">
+								<div class="form-group row">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Property Type 
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="propertyType_primary" th:field="*{propertyType}"
+													value="1" /> <label for="propertyType_primary">
+													Primary </label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="propertyType_secondhome" th:field="*{propertyType}"
+													value="2" /> <label for="propertyType_secondhome">Second
+													Home</label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="propertyType_investment" th:field="*{propertyType}"
+													value="3" /> <label for="propertyType_investment">Investment</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="form-group row">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Number of Units 
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsRefinance_1" th:field="*{noOfUnitsRefinance}"
+													value="1" /> <label for="noOfUnitsRefinance_1"> 1
+												</label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsRefinance_2" th:field="*{noOfUnitsRefinance}"
+													value="2" /> <label for="noOfUnitsRefinance_2">2</label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsRefinance_3" th:field="*{noOfUnitsRefinance}"
+													value="3" /> <label for="noOfUnitsRefinance_3"> 3
+												</label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsRefinance_4" th:field="*{noOfUnitsRefinance}"
+													value="3" /> <label for="noOfUnitsRefinance_4"> 4
+												</label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsRefinance_5" th:field="*{noOfUnitsRefinance}"
+													value="3" /> <label for="noOfUnitsRefinance_5">
+													Condo </label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-4 col-sm-12">
+										<label class="control-label">How many Mortgages on
+											Property ? <!-- <span class="red">*</span> -->
+										</label>
+									</div>
+									<div class="col-md-8 col-sm-12">
+
+										<div class=" row custom_select">
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="noOfMortgages"
+													id="noOfMortgages_no" th:field="*{noOfMortgages}" value="0" />
+												<label for="noOfMortgages_no"> Does not apply </label>
+											</div>
+											<div class="col-md-3 col-sm-12 ">
+												<input type="radio" class="noOfMortgages"
+													id="noOfMortgages_1" th:field="*{noOfMortgages}" value="1" />
+												<label for="noOfMortgages_1"> 1 </label>
+											</div>
+											<div class="col-md-3 col-sm-12">
+												<input type="radio" class="noOfMortgages"
+													id="noOfMortgages_2" th:field="*{noOfMortgages}" value="2" />
+												<label for="noOfMortgages_2"> 2 </label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group row noOfMortgages_bank bank1"
+									th:style="${noOfMortgages >0 ?'' :'display:none;' }">
+
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Bank Name <span
+											class="red">*</span></label> <input type="text"
+											class="form-control 1requiredrefinance" th:field="*{bankName}"
+											maxlength="50" placeholder="" id="bankName" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Balance of Mortgage</label> <input
+											type="text" class="form-control money"
+											th:field="*{balanceMortgage}" maxlength="20" placeholder=""
+											id="balanceMortgage" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12">
+										<label class="control-label">Monthly Payment <span
+											class="red">*</span></label> <input type="text"
+											class="form-control money 1requiredrefinance" th:field="*{monthlyPayment}"
+											maxlength="50" id="monthlyPayment" placeholder="" title="" />
+									</div>
+								</div>
+								<div class="form-group row noOfMortgages_bank bank2"
+									th:style="${noOfMortgages >1 ?'' :'display:none;' }">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">2nd Bank Name <span
+											class="red">*</span></label> <input type="text"
+											class="form-control 2requiredrefinance" th:field="*{secondBankName}"
+											maxlength="50" placeholder="" id="secondBankName" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Balance of Mortgage</label> <input
+											type="text" class="form-control money"
+											th:field="*{seoncdBalanceMortgage}" maxlength="20"
+											placeholder="" id="seoncdBalanceMortgage" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12">
+										<label class="control-label">Monthly Payment <span
+											class="red">*</span></label> <input type="text"
+											class="form-control money 2requiredrefinance"
+											th:field="*{secondMonthlyPayment}" maxlength="50"
+											id="secondMonthlyPayment" placeholder="" title="" />
+									</div>
+
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">Requested Loan Amount <!-- <span class="red">*</span> -->
+										</label> <input type="text" class="form-control money requiredrefinance"
+											th:field="*{requestLoanamount}" maxlength="50" placeholder=""
+											id="requestLoanamount" title="" />
+									</div>
+
+								</div>
+
+
+
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											Are you looking for money for any additional reasons, or
+											anything you'd like us to know ? </label>
+									</div>
+									<div class="col-sm-12 text-left">
+										<textarea class="form-control" name="loanReason"
+											id="loanReason" placeholder="" value=""></textarea>
+									</div>
+								</div>
+							</div>
+							<div id="purchasepanel"
+								th:style="${app_purpose.mortgagePurpose == 0 ?'' :'display:none;' }">
+								<div class="form-group row">
+									<div class="col-sm-12 text-left">
+										<label for="co-bar" class="col-form-label lbl_co_borrow">
+											Where are you in the home buying process? </label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="buyingProcess"
+													id="buyingProcess_1" th:field="*{buyingProcess}" value="0" />
+												<label for="buyingProcess_1"> Signed a purchase
+													contract </label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="buyingProcess"
+													id="buyingProcess_2" th:field="*{buyingProcess}" value="1" />
+												<label for="buyingProcess_2">Offer peinding/found
+													property</label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="buyingProcess"
+													id="buyingProcess_3" th:field="*{buyingProcess}" value="2" />
+												<label for="buyingProcess_3">Aggressively looking
+													and hope to buy soon</label>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<input type="radio" class="buyingProcess"
+													id="buyingProcess_4" th:field="*{buyingProcess}" value="3" />
+												<label for="buyingProcess_4">Looking at options
+													right now</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">City <span class="red">*</span>
+										</label> <input type="text" class="form-control required"
+											th:field="*{propertyCity}" maxlength="50" placeholder=""
+											id="propertyCity" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 ">
+										<label class="control-label">State<span class="red">*</span>
+										</label> <!-- <input type="text" class="form-control"
+											th:field="*{propertyState}" maxlength="20" placeholder=""
+											id="propertyState" title="" /> --> <select class="form-control required"
+											 >
+											
+											<option th:each="state : ${states}" th:value="${state.propertyCode}"
+												th:text="${state.propertyState}"></option>
+										</select>
+									</div>
+									<div class="col-sm-3 co-xs-12">
+										<label class="control-label">Zip <span class="red">*</span>
+										</label> <input type="text" class="form-control zip required"
+											th:field="*{propertyZip}" maxlength="50" id="propertyZip"
+											placeholder="" title="" />
+									</div>
+								</div>
+
+								<div class="form-group row buying_show"
+									th:style="${app_purpose.buyingProcess == 0 || app_purpose.buyingProcess == 1  ?'' :'display:none;' }">
+									<div class="col-sm-3 co-xs-12 purchaseprice"
+										th:style="${app_purpose.buyingProcess == 0 || app_purpose.buyingProcess == 1  ?'' :'display:none;' }">
+										<label class="control-label">Purchase Price <span
+											class="red">*</span></label> <input type="text"
+											class="form-control money buyrequired"
+											th:field="*{propertyPurchaseprice}" maxlength="50"
+											placeholder="" id="propertyPurchaseprice" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 expdate"
+										th:style="${app_purpose.buyingProcess == 0   ?'' :'display:none;' }">
+										<label class="control-label">Contract Expiration Date</label>
+										<input type="text" class="form-control date  expiration-date hasDatepicker "
+											th:field="*{contractExpirationDate}" maxlength="20"
+											placeholder="" id="contractExpirationDate" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 downpayment"
+										th:style="${app_purpose.buyingProcess == 0 || app_purpose.buyingProcess == 1  ?'' :'display:none;' }">
+										<label class="control-label">Down Payment</label> <input
+											type="text" class="form-control money" th:field="*{downPayment}"
+											maxlength="20" placeholder="" id="downPayment" title="" />
+									</div>
+									<div class="col-sm-3 co-xs-12 giftamount"
+										th:style="${app_purpose.buyingProcess == 0 || app_purpose.buyingProcess == 1  ?'' :'display:none;' }">
+										<label class="control-label">Gift Amount</label> <input
+											type="text" class="form-control money" th:field="*{giftAmount}"
+											maxlength="20" placeholder="" id="giftAmount" title="" />
+									</div>
+
+								</div>
+								<div id="purchase2">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Property Type <!-- <span class="red">*</span> -->
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="purchasePropertyType_1"
+													th:field="*{purchasePropertyType}" value="1" /> <label
+													for="purchasePropertyType_1"> Primary </label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="purchasePropertyType_2"
+													th:field="*{purchasePropertyType}" value="2" /> <label
+													for="purchasePropertyType_2">Second Home</label>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="purchasePropertyType_3"
+													th:field="*{purchasePropertyType}" value="3" /> <label
+													for="purchasePropertyType_3">Investment</label>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<div id="purchase2">
+
+									<div class="col-md-2 col-sm-12">
+										<label class="control-label">Number of Units <!-- 	<span class="red">*</span> -->
+										</label>
+									</div>
+									<div class="col-md-10 col-sm-12">
+										<div class="custom_select">
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsPurchase_1" th:field="*{noOfUnitsPurchase}"
+													value="1" /> <label for="noOfUnitsPurchase_1"> 1 </label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsPurchase_2" th:field="*{noOfUnitsPurchase}"
+													value="2" /> <label for="noOfUnitsPurchase_2">2</label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsPurchase_3" th:field="*{noOfUnitsPurchase}"
+													value="3" /> <label for="noOfUnitsPurchase_3"> 3 </label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsPurchase_4" th:field="*{noOfUnitsPurchase}"
+													value="3" /> <label for="noOfUnitsPurchase_4"> 4 </label>
+											</div>
+											<div class="col-md-2 col-sm-12">
+												<input type="radio" class="ethnicity"
+													id="noOfUnitsPurchase_5" th:field="*{noOfUnitsPurchase}"
+													value="3" /> <label for="noOfUnitsPurchase_5">
+													Condo </label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-sm-5 text-left">
+									<label class="col-form-label lbl_co_borrow"> Have you
+										owned a property in the last 3 years?</label>
+								</div>
+								<div class="col-sm-4">
+									<div class="toggle_text">
+										<span> NO </span> <input type="checkbox"
+											th:field="*{propertyOwned}" id="propertyOwned"
+											class="cbx hidden" value="Yes"> <label
+											for="propertyOwned" class="lbl"></label> <span> YES </span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row text-center">
+								<div class="col-sm-7 col-sm-offset-3 ">
+									<button class="btn btn_previous btn_custom btn_inline"
+										id="btn_prev_app_purpose">
+										<i class="fa fa-chevron-left"></i> Previous
+									</button>
+									<button class="btn btn_next btn_custom btn_inline"
+										id="btn_next_app_purpose">
+										Next <i class="fa fa-chevron-right"></i>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+
+		$(function() {
+			$('.input-group.date .expiration-date').datepicker({
+				autoclose : true,
+				todayHighlight : true
+			});
+		});
+		/*]]>*/
+	</script>
+	<script th:src="@{/assets/js/custom/longapp/purpose.js}"></script>
+</div>

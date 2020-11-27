@@ -1,0 +1,60 @@
+
+<div id="others_div" class="tabForms" style="display: none;"
+	th:fragment="tabForms">
+	<form class="form-horizontal" method="POST" id="form_otherincome"
+		th:object="${app_otherincome}" th:modelAttribute="loan_app">
+		  <input type="hidden" id="incomeid_other" th:field="*{incomeId}" 
+									value="">  
+		<div class="form-group row">
+			<div class="col-sm-5 text-left">
+				<label for="employment_owner_other"
+					class="col-form-label lbl_co_borrow"> <span class="red">*</span>
+					Account Owner
+				</label>
+			</div>
+			<div class="col-sm-7 text-left">
+				<select class="form-control required62" id="employment_owner_emp"
+					th:field="*{accountOwner}">
+					<option value="borr">[[${app_start == null ? '':
+						app_start.borrowerFullName}]]</option>
+					<option th:if="${app_start != null &&  app_start.coBorrowerStatus == 'Yes'}" value="coborr">[[${app_start == null ? '':
+						app_start.coBorrowerFullName}]]</option>
+
+
+				</select>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-md-offset-3 col-sm-6">
+				<div class="col-sm-6">
+					<label class="control-label"> Income Type <span class="red">*</span></label>
+					<select class="form-control required94"
+						id="borrower_employment_type_other"
+						th:field="*{incomeType}" >
+						<option value="Alimony / Child Support">Alimony / Child
+							Support</option>
+						<option value="Annuity">Annuity</option>
+						<option value="Deferred Compensation">Deferred
+							Compensation</option>
+						<option value="Interest / Dividends">Interest / Dividends</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				<div class="col-sm-6">
+					<label class="control-label"> Annual Base Salary<span
+						class="red">*</span>
+					</label> <input type="text" class="form-control money required94"
+						th:field="*{annualBaseSalary}"  
+						id="borrower_employer_base_income_other">
+				</div>
+			</div>
+		</div>
+		<div class="form-group row text-center">
+			<div class="col-sm-12">
+				<button class="btn btn_custom btn_inline" id="backbutton_other">Back</button>
+				<button class="btn btn_add_other btn_custom btn_inline"
+					id="btn_add_other">Add Income</button>
+			</div>
+		</div>
+	</form>
+</div>
